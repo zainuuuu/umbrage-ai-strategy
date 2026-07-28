@@ -1,0 +1,147 @@
+{
+  "meta": {
+    "pageTitle": "How We Help Organizations Build and Scale AI",
+    "route": "/services/ai-roadmap",
+    "eyebrow": "Umbrage Services",
+    "hero": {
+      "headline": "AI-fluent. Outcome-driven. Built to ship.",
+      "subhead": "Your front door to AI delivery. Wherever you are on your AI journey, there's a next step \u2014 and a service designed to meet you there.",
+      "attribution": "Umbrage is an AI-delivery arm inside Bain & Company."
+    },
+    "_brandTokensNote": "Reconstructed from the 2026 deck's own slide styling. CONFIRM against the style guide (https://umbrage-website-2026.pages.umbrage.com/2026-u-styleguide/) as build step 0 \u2014 especially the exact web font and any values below.",
+    "brand": {
+      "color": {
+        "ink": "#030511",
+        "inkDeep": "#00041B",
+        "navy": "#0C1546",
+        "navy2": "#06102D",
+        "offWhite": "#F7F7F7",
+        "offWhite2": "#F4F7F8",
+        "accent": "#1E4FE0",
+        "accentTints": ["#4B72E6", "#8EA7EF", "#BBCAF6"],
+        "softPink": "#FFEBF1",
+        "white": "#FFFFFF"
+      },
+      "type": {
+        "display": "Aptos Black (confirm web equivalent from style guide)",
+        "body": "Aptos / Aptos Light (confirm web equivalent)",
+        "notes": "Cera Pro is Umbrage's licensed brand face; Aptos is the accepted fallback. Use whatever the style guide specifies for web."
+      },
+      "logo": "Umbrage helmet mark"
+    }
+  },
+
+  "challengeCloud": {
+    "eyebrow": "Your AI Transformation Journey",
+    "headline": "Your journey will touch a lot: strategy, data, architecture, delivery, adoption, governance, and more.",
+    "body": "Whether you need to identify the right opportunities, build a production-ready AI product, or establish the capability to scale AI across the enterprise, we meet you where you are and support what comes next.",
+    "center": "Where are you on your AI Transformation Journey?",
+    "labels": [
+      "Cost unpredictability", "IP & copyright risk", "Unclear ownership", "Competitive pressure",
+      "AI governance framework", "Rapidly shifting landscape", "Security & compliance", "Disconnected vendors",
+      "Model drift", "Technical debt", "Procurement bottlenecks", "Third-party risk", "Legacy systems",
+      "Use case prioritization", "Leadership alignment", "Bias & fairness", "Model explainability",
+      "Regulatory uncertainty", "Hallucination risk", "Integration complexity", "Executive turnover",
+      "Customer trust", "Vendor lock-in risk", "Scalability architecture", "PoC-to-production failure",
+      "Siloed data", "Shadow AI usage", "Cloud & compute constraints", "Data privacy exposure",
+      "Change management fatigue", "Change resistance", "Data quality & governance",
+      "Documentation deficits", "Talent gaps", "AI literacy", "ROI measurement"
+    ]
+  },
+
+  "matrix": {
+    "eyebrow": "Where You Can Begin",
+    "headline": "What's your current challenge?",
+    "columns": { "left": "Service", "middle": "When\u2026", "right": "We deliver\u2026" },
+    "connector": "dotted arrow, draws left-to-right on scroll"
+  },
+
+  "structure": {
+    "entry": "ai-prequel",
+    "container": { "id": "ai-product-delivery-system", "houses": ["data-ai-foundations", "legacy-modernization", "end-to-end-ai-product-development"], "metaphor": "radial/concentric \u2014 system at core, three services as rings around it (see slide 2)" },
+    "alongside": "embedded-experts",
+    "excluded": ["digital-factory"],
+    "displayOrder": ["ai-prequel", "end-to-end-ai-product-development", "legacy-modernization", "data-ai-foundations", "ai-product-delivery-system", "embedded-experts"]
+  },
+
+  "offerings": [
+    {
+      "id": "ai-prequel",
+      "name": "AI Prequel",
+      "iconSlot": "prequel-mark",
+      "role": "entry",
+      "descriptor": "The work that must be true before AI ships.",
+      "challenge": { "short": "You need clarity", "matrix": "You need clarity and direction" },
+      "tagline": "The work that must be true before AI ships.",
+      "valueStory": "We find where AI can create real value, confirm your data and systems can carry it, and leave you with a roadmap you can actually build against.",
+      "outcome": "A prioritized roadmap, and the confidence to know exactly where to invest first.",
+      "outcomeStat": null,
+      "cta": { "label": "Get AI Ready", "href": "#" }
+    },
+    {
+      "id": "end-to-end-ai-product-development",
+      "name": "End-to-End AI Product Development",
+      "iconSlot": "e2e-mark",
+      "role": "housed",
+      "descriptor": "Builds and ships a specific AI product.",
+      "challenge": { "short": "You know what to build", "matrix": "You know what to build" },
+      "tagline": "Builds and ships a specific AI product.",
+      "valueStory": "We take it from strategy to working software, architecture through production-grade code, built so your team can own it, with knowledge transfer throughout \u2014 not at the end.",
+      "outcome": "A shipped product in market, actually being used by your users.",
+      "outcomeStat": null,
+      "cta": { "label": "Let's ship it", "href": "#" }
+    },
+    {
+      "id": "legacy-modernization",
+      "name": "Legacy Modernization",
+      "iconSlot": "legacy-mark",
+      "role": "housed",
+      "descriptor": "Ready legacy systems for AI.",
+      "challenge": { "short": "Your systems are holding you back", "matrix": "Your systems are holding you back" },
+      "tagline": "Ready legacy systems for AI.",
+      "valueStory": "We assess what you're running, re-architect for cloud-native, AI-ready infrastructure, and migrate live \u2014 without taking your operations offline.",
+      "outcome": "Modernized systems, ready for AI, typically unlocking 30 to 50 percent faster release cycles.",
+      "outcomeStat": { "value": "30\u201350%", "label": "faster release cycles" },
+      "cta": { "label": "Get with the times", "href": "#" }
+    },
+    {
+      "id": "data-ai-foundations",
+      "name": "Data & AI Foundations",
+      "iconSlot": "data-mark",
+      "role": "housed",
+      "descriptor": "Data, architecture, governance.",
+      "challenge": { "short": "Your data isn't ready", "matrix": "Your data isn't ready" },
+      "tagline": "Data, architecture, governance.",
+      "valueStory": "We get the data layer right before the build starts, unifying pipelines and governance scoped to your actual environment \u2014 not a generic checklist.",
+      "outcome": "A trusted, governed data foundation every AI product you build next can actually stand on.",
+      "outcomeStat": null,
+      "cta": { "label": "Trust Your Data", "href": "#" }
+    },
+    {
+      "id": "ai-product-delivery-system",
+      "name": "AI Product Delivery System",
+      "iconSlot": "delivery-system-mark",
+      "role": "container",
+      "descriptor": "The system that ships, governs, and hands over.",
+      "challenge": { "short": "You need to scale", "matrix": "You need to scale" },
+      "tagline": "The system that ships, governs, and hands over.",
+      "valueStory": "We standardize product strategy, engineering delivery, governance, and continuous improvement into one repeatable system, built through real product work \u2014 not a framework we hand you and leave.",
+      "outcome": "A company-wide product operating model, set up and running, built for AI from day one.",
+      "outcomeStat": null,
+      "cta": { "label": "Assess Your Delivery Model", "href": "#" }
+    },
+    {
+      "id": "embedded-experts",
+      "name": "Embedded Experts",
+      "iconSlot": "embedded-mark",
+      "role": "alongside",
+      "descriptor": "Within your team for immediate outcomes.",
+      "challenge": { "short": "You don't have the team", "matrix": "You don't have the team" },
+      "tagline": "Within your team for immediate outcomes.",
+      "valueStory": "We embed Forward Deployed Engineers and Product Builders directly into your workflows, backed by our full bench across engineering, data and AI, experience design, and delivery.",
+      "outcome": "A team shipping 25 to 40 percent faster, from their very first sprint.",
+      "outcomeStat": { "value": "25\u201340%", "label": "faster, from the first sprint" },
+      "cta": { "label": "Embed with experts", "href": "#" }
+    }
+  ]
+}
