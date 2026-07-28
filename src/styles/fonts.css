@@ -1,0 +1,30 @@
+/* ============================================================================
+   FONTS — SINGLE SWAP POINT
+   ----------------------------------------------------------------------------
+   The type FAMILIES are confirmed by the 2026 Style Guide: Aptos (display +
+   body), Aptos Serif (metric/editorial accents), Aptos Mono (eyebrows/labels).
+   The web FONT-FACE / file source is NOT yet confirmed (see meta.brand.type.loading).
+
+   Aptos is not an open web font, so for standalone dev we fall back to a close
+   neutral stack (defined in tokens.css). Note: on Windows / Microsoft 365
+   machines real Aptos is installed locally and will be picked up automatically.
+
+   TO SHIP THE REAL FACES — this is the only place you touch:
+     1. Drop the woff2 files into src/assets/fonts/
+     2. Uncomment the @font-face blocks below.
+   The family names already match the tokens in tokens.css, so nothing else
+   changes anywhere in the app.
+   ============================================================================ */
+
+/*
+@font-face { font-family: 'Aptos'; src: url('../assets/fonts/Aptos-Light.woff2')    format('woff2'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Aptos'; src: url('../assets/fonts/Aptos-Regular.woff2')  format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Aptos'; src: url('../assets/fonts/Aptos-Semibold.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Aptos'; src: url('../assets/fonts/Aptos-Bold.woff2')     format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Aptos'; src: url('../assets/fonts/Aptos-Black.woff2')    format('woff2'); font-weight: 900; font-style: normal; font-display: swap; }
+
+@font-face { font-family: 'Aptos Serif'; src: url('../assets/fonts/AptosSerif-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Aptos Serif'; src: url('../assets/fonts/AptosSerif-Bold.woff2')    format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+
+@font-face { font-family: 'Aptos Mono'; src: url('../assets/fonts/AptosMono-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+*/

@@ -3,31 +3,57 @@
     "pageTitle": "How We Help Organizations Build and Scale AI",
     "route": "/services/ai-roadmap",
     "eyebrow": "Umbrage Services",
+    "renderCtas": false,
+    "renderCtasNote": "CTAs are intentionally omitted on this standalone page. Once merged into the wider site, header/footer/CTA chrome is provided by the site. CTA labels are retained in offerings[] for future use but must NOT render here.",
+    "deployHost": "TBD — spec said Cloudflare Pages, but the live URLs respond as server: CloudFront (AWS). Does not block the standalone build; resolve before merge.",
     "hero": {
       "headline": "AI-fluent. Outcome-driven. Built to ship.",
       "subhead": "Your front door to AI delivery. Wherever you are on your AI journey, there's a next step \u2014 and a service designed to meet you there.",
-      "attribution": "Umbrage is an AI-delivery arm inside Bain & Company."
+      "attribution": "Umbrage is an AI-execution arm of Bain & Company."
     },
-    "_brandTokensNote": "Reconstructed from the 2026 deck's own slide styling. CONFIRM against the style guide (https://umbrage-website-2026.pages.umbrage.com/2026-u-styleguide/) as build step 0 \u2014 especially the exact web font and any values below.",
+    "closing": {
+      "_status": "DRAFT copy \u2014 confirm or replace. This is the closing resolution line, not a CTA.",
+      "headline": "Wherever you're starting from, there's a next step.",
+      "subhead": "Find your entry point \u2014 we build the path from there."
+    },
     "brand": {
+      "_source": "Confirmed from the 2026 Umbrage Visual Style Guide. Palette = Savoy / Blush / Onyx + Bain Red. Type = Aptos family. Font-loading method (@font-face / files) still to confirm from the site repo at merge; for standalone dev, self-host Aptos (Aptos, Aptos Serif, Aptos Mono) or use a close fallback.",
       "color": {
-        "ink": "#030511",
-        "inkDeep": "#00041B",
-        "navy": "#0C1546",
-        "navy2": "#06102D",
-        "offWhite": "#F7F7F7",
-        "offWhite2": "#F4F7F8",
-        "accent": "#1E4FE0",
-        "accentTints": ["#4B72E6", "#8EA7EF", "#BBCAF6"],
-        "softPink": "#FFEBF1",
-        "white": "#FFFFFF"
+        "savoy": { "1": "#E8EDFC", "2": "#BBCAF6", "3": "#8EA7EF", "4": "#7895EC", "5": "#4B72E6", "base": "#1E4FE0", "6": "#183FB3", "7": "#122F86", "8": "#0C205A", "9": "#06102D" },
+        "blush": { "1": "#FFEBF1", "2": "#FFC3D6", "3": "#FF9ABB", "4": "#FF86AD", "5": "#FF5E92", "base": "#FF3677", "6": "#CC2B5F", "7": "#992047", "8": "#661630", "9": "#330B18" },
+        "onyx": { "1": "#F7F7F7", "2": "#D6D9DC", "3": "#B8BBBF", "4": "#7C7E87", "5": "#40424B", "base": "#030511" },
+        "bainRed": { "1": "#FFF7F0", "2": "#FFD5C0", "3": "#FFBFA8", "4": "#FF8A78", "5": "#FF4B48", "6": "#FF0025", "base": "#CC0000", "8": "#9C0000", "9": "#6A0000", "10": "#410000" },
+        "roles": {
+          "ground": "onyx.base #030511 \u2014 default dark ground for most of the page",
+          "groundBreak": "onyx.1 #F7F7F7 \u2014 one off-white contrast break",
+          "accentPrimary": "savoy.base #1E4FE0",
+          "accentSecondary": "blush.base #FF3677",
+          "partnershipAccent": "bainRed.6 #FF0025 for AA text on Onyx; bainRed.base for large accents only",
+          "textOnDark": "#FFFFFF",
+          "textOnLight": "#23252E (charcoal, ~13:1 on off-white)"
+        }
       },
       "type": {
-        "display": "Aptos Black (confirm web equivalent from style guide)",
-        "body": "Aptos / Aptos Light (confirm web equivalent)",
-        "notes": "Cera Pro is Umbrage's licensed brand face; Aptos is the accepted fallback. Use whatever the style guide specifies for web."
+        "display": { "family": "Aptos", "weights": ["Light", "Regular", "Semibold", "Bold", "Black"], "use": "display + body" },
+        "editorial": { "family": "Aptos Serif", "use": "sparingly \u2014 accents and large metric callouts only (e.g. the outcome stats)" },
+        "utility": { "family": "Aptos Mono", "use": "eyebrows, captions, data labels \u2014 uppercase, wide tracking" },
+        "scale": { "display": "120px", "headline": "88px", "section": "56px", "heading": "44px", "subhead": "32px", "lead": "18px", "body": "16px" },
+        "rules": "Body 16\u201322px regular; bold reserved for headings and lead-in lines, never whole paragraphs. Eyebrows: mono, uppercase, spaced. Headings: Title Case. Buttons/labels: sentence case. (Keep headline COPY exactly as written in this file even where it reads sentence-case.)",
+        "loading": "TBD \u2014 confirm Aptos web font files / @font-face from the site repo at merge."
       },
-      "logo": "Umbrage helmet mark"
+      "surfaces": [
+        "Onyx default \u2014 white type, Savoy & Blush accents",
+        "Off-white break \u2014 charcoal type, Savoy eyebrow (use once for contrast)",
+        "Partnership close \u2014 Bain Red 60 on Onyx (only if a partnership section is added)"
+      ],
+      "radius": { "card": "16px", "photo": "20px" },
+      "gap": { "cardMin": "16px" },
+      "sectionMarker": "Uppercase Aptos Mono eyebrow over a hairline rule. Left-justified: rule extends 80px past the text on the right. Centered: 80px on both sides. Savoy is default; Blush / Bain Red flag their own sections.",
+      "buttons": { "primary": "no fill, solid on hover, no stroke", "secondary": "pill, 1px stroke", "tertiary": "text, leading/trailing icon", "note": "Not rendered on this page (see meta.renderCtas)." },
+      "colorRule": "Flat color everywhere. The ONLY gradient in the system is the Praxis\u00ae wordmark (Blush into violet, clipped to the word) \u2014 not used on this page. Do NOT use gradients in backgrounds, cards, or the motion layer.",
+      "mosaicGrid": "Signature background motif: a gradient rendered as a grid of \u22658 equal-width columns, with Savoy + Blush glow coming through the Onyx base, tiling continuously between content areas. Glow shape adapts to context. Candidate background for the hero and challenge-cloud scenes.",
+      "voice": "Direct, confident, no hype. Lead with the outcome and the number. Short declaratives (\u201cBuilt to ship.\u201d). Avoid \u201cunlock/empower/revolutionize\u201d, ALL-CAPS, and emoji.",
+      "logo": "Full Umbrage wordmark + \u201cPart of Bain & Company\u201d at rest; reduces to the helmet mark on scroll. This is page chrome \u2014 not this standalone page's concern until merge."
     }
   },
 
@@ -76,7 +102,7 @@
       "valueStory": "We find where AI can create real value, confirm your data and systems can carry it, and leave you with a roadmap you can actually build against.",
       "outcome": "A prioritized roadmap, and the confidence to know exactly where to invest first.",
       "outcomeStat": null,
-      "cta": { "label": "Get AI Ready", "href": "#" }
+      "cta": { "label": "Get AI ready", "href": null }
     },
     {
       "id": "end-to-end-ai-product-development",
@@ -89,7 +115,7 @@
       "valueStory": "We take it from strategy to working software, architecture through production-grade code, built so your team can own it, with knowledge transfer throughout \u2014 not at the end.",
       "outcome": "A shipped product in market, actually being used by your users.",
       "outcomeStat": null,
-      "cta": { "label": "Let's ship it", "href": "#" }
+      "cta": { "label": "Let's ship it", "href": null }
     },
     {
       "id": "legacy-modernization",
@@ -102,7 +128,7 @@
       "valueStory": "We assess what you're running, re-architect for cloud-native, AI-ready infrastructure, and migrate live \u2014 without taking your operations offline.",
       "outcome": "Modernized systems, ready for AI, typically unlocking 30 to 50 percent faster release cycles.",
       "outcomeStat": { "value": "30\u201350%", "label": "faster release cycles" },
-      "cta": { "label": "Get with the times", "href": "#" }
+      "cta": { "label": "Get with the times", "href": null }
     },
     {
       "id": "data-ai-foundations",
@@ -115,7 +141,7 @@
       "valueStory": "We get the data layer right before the build starts, unifying pipelines and governance scoped to your actual environment \u2014 not a generic checklist.",
       "outcome": "A trusted, governed data foundation every AI product you build next can actually stand on.",
       "outcomeStat": null,
-      "cta": { "label": "Trust Your Data", "href": "#" }
+      "cta": { "label": "Trust your data", "href": null }
     },
     {
       "id": "ai-product-delivery-system",
@@ -128,7 +154,7 @@
       "valueStory": "We standardize product strategy, engineering delivery, governance, and continuous improvement into one repeatable system, built through real product work \u2014 not a framework we hand you and leave.",
       "outcome": "A company-wide product operating model, set up and running, built for AI from day one.",
       "outcomeStat": null,
-      "cta": { "label": "Assess Your Delivery Model", "href": "#" }
+      "cta": { "label": "Assess your delivery model", "href": null }
     },
     {
       "id": "embedded-experts",
@@ -141,7 +167,7 @@
       "valueStory": "We embed Forward Deployed Engineers and Product Builders directly into your workflows, backed by our full bench across engineering, data and AI, experience design, and delivery.",
       "outcome": "A team shipping 25 to 40 percent faster, from their very first sprint.",
       "outcomeStat": { "value": "25\u201340%", "label": "faster, from the first sprint" },
-      "cta": { "label": "Embed with experts", "href": "#" }
+      "cta": { "label": "Embed with experts", "href": null }
     }
   ]
 }

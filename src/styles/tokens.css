@@ -1,0 +1,116 @@
+/* ============================================================================
+   DESIGN TOKENS — generated from roadmap-content.json > meta.brand (CONFIRMED)
+   ----------------------------------------------------------------------------
+   Scoped to .ai-roadmap (NOT :root) so nothing leaks into a host app at merge.
+   ============================================================================ */
+
+.ai-roadmap {
+  /* --- Savoy ramp (primary accent family) --- */
+  --savoy-1: #E8EDFC;
+  --savoy-2: #BBCAF6;
+  --savoy-3: #8EA7EF;
+  --savoy-4: #7895EC;
+  --savoy-5: #4B72E6;
+  --savoy:   #1E4FE0; /* base */
+  --savoy-6: #183FB3;
+  --savoy-7: #122F86;
+  --savoy-8: #0C205A;
+  --savoy-9: #06102D;
+
+  /* --- Blush ramp (secondary accent family) --- */
+  --blush-1: #FFEBF1;
+  --blush-2: #FFC3D6;
+  --blush-3: #FF9ABB;
+  --blush-4: #FF86AD;
+  --blush-5: #FF5E92;
+  --blush:   #FF3677; /* base */
+  --blush-6: #CC2B5F;
+  --blush-7: #992047;
+  --blush-8: #661630;
+  --blush-9: #330B18;
+
+  /* --- Onyx ramp (grounds + neutrals) --- */
+  --onyx-1: #F7F7F7;
+  --onyx-2: #D6D9DC;
+  --onyx-3: #B8BBBF;
+  --onyx-4: #7C7E87;
+  --onyx-5: #40424B;
+  --onyx:   #030511; /* base */
+
+  /* --- Bain Red ramp (partnership only; not used on this page) --- */
+  --bain-1:  #FFF7F0;
+  --bain-2:  #FFD5C0;
+  --bain-3:  #FFBFA8;
+  --bain-4:  #FF8A78;
+  --bain-5:  #FF4B48;
+  --bain-6:  #FF0025;
+  --bain:    #CC0000; /* base */
+  --bain-8:  #9C0000;
+  --bain-9:  #6A0000;
+  --bain-10: #410000;
+
+  /* --- Role colors --- */
+  --ground: var(--onyx);          /* default dark ground for most of the page */
+  --ground-break: var(--onyx-1);  /* one off-white contrast break */
+  --accent-primary: var(--savoy);
+  --accent-secondary: var(--blush);
+  --partnership-accent: var(--bain-6);
+  --text-on-dark: #FFFFFF;
+  --text-on-light: #23252E;       /* charcoal, ~13:1 on off-white */
+  --hairline-on-dark: rgba(255, 255, 255, 0.14);
+  --hairline-on-light: rgba(3, 5, 17, 0.16);
+  --card-border-on-dark: rgba(30, 79, 224, 0.35); /* 1px Savoy-tinted border on Onyx */
+
+  /* --- Type families (match names in fonts.css swap point) --- */
+  --font-display: 'Aptos', 'Inter', system-ui, 'Segoe UI', Roboto, Arial, sans-serif;
+  --font-editorial: 'Aptos Serif', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
+  --font-mono: 'Aptos Mono', ui-monospace, 'SF Mono', 'Segoe UI Mono', Menlo, Consolas, monospace;
+
+  /* --- Type scale (120 / 88 / 56 / 44 / 32 / 18 / 16) ---
+     px targets are the desktop caps; clamp() keeps it mobile-first fluid. */
+  --fs-display:  clamp(3rem, 9vw + 0.5rem, 7.5rem);   /* -> 120px */
+  --fs-headline: clamp(2.5rem, 7vw, 5.5rem);          /* -> 88px  */
+  --fs-section:  clamp(2rem, 5vw, 3.5rem);            /* -> 56px  */
+  --fs-heading:  clamp(1.75rem, 3.5vw, 2.75rem);      /* -> 44px  */
+  --fs-subhead:  clamp(1.375rem, 2.4vw, 2rem);        /* -> 32px  */
+  --fs-lead:     1.125rem;                            /* 18px     */
+  --fs-body:     1rem;                                /* 16px     */
+  --fs-eyebrow:  0.75rem;                             /* mono caps */
+
+  /* --- Weights --- */
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-black: 900;
+
+  /* --- Radius (16 / 20) --- */
+  --radius-card: 16px;
+  --radius-photo: 20px;
+
+  /* --- Gaps / spacing --- */
+  --gap-card: 16px;               /* brand.gap.cardMin */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 40px;
+  --space-5: 64px;
+  --space-6: 96px;
+  --space-7: 128px;
+
+  /* --- Layout --- */
+  --page-max: 1200px;
+  --page-pad: clamp(20px, 5vw, 80px);
+  --section-pad-y: clamp(64px, 12vh, 160px);
+  --section-marker-overrun: 80px; /* rule runs 80px past the eyebrow text */
+
+  /* --- Base surface --- */
+  background: var(--ground);
+  color: var(--text-on-dark);
+  font-family: var(--font-display);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-regular);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
