@@ -2,7 +2,8 @@ import { useEffect } from 'react'
 import content from '../content.js'
 
 import RoadmapHero from './RoadmapHero.jsx'
-import ScenePlaceholder from './ScenePlaceholder.jsx'
+import ChallengeCloud from './ChallengeCloud.jsx'
+import StructureReveal from './StructureReveal.jsx'
 import ChallengeMatrix from './ChallengeMatrix.jsx'
 import ServiceSection from './ServiceSection.jsx'
 import EmbeddedExpertsSection from './EmbeddedExpertsSection.jsx'
@@ -12,7 +13,7 @@ import ClosingResolution from './ClosingResolution.jsx'
 // from roadmap-content.json. Phase 1: static, flat surfaces, no motion, no CTAs.
 // The two radial scenes render as correctly-sized placeholders (Phase 2).
 export default function RoadmapPage() {
-  const { meta, challengeCloud, matrix, structure, offerings } = content
+  const { meta, challengeCloud, matrix, structure, structureReveal, offerings } = content
 
   useEffect(() => {
     document.title = meta.pageTitle
@@ -24,20 +25,15 @@ export default function RoadmapPage() {
     <main className="ai-roadmap">
       <RoadmapHero eyebrow={meta.eyebrow} hero={meta.hero} />
 
-      {/* Act 2 — chaos (geometry-heavy, Phase 2) */}
-      <ScenePlaceholder
-        id="challenge-cloud"
-        eyebrow={challengeCloud.eyebrow}
-        title="ChallengeCloud"
-        note={`Radial burst of ${challengeCloud.labels.length} challenge labels around the center prompt.`}
-        copy={challengeCloud.center}
-      />
+      {/* Act 2 — chaos: radial challenge cloud */}
+      <ChallengeCloud challengeCloud={challengeCloud} />
 
-      {/* Act 2 → order (geometry-heavy, Phase 2) */}
-      <ScenePlaceholder
-        id="structure-reveal"
-        title="StructureReveal"
-        note="Concentric rings (Delivery System at core, three services as rings) + six-item list + AI Prequel entry callout."
+      {/* Act 2 → order: concentric structure reveal */}
+      <StructureReveal
+        structureReveal={structureReveal}
+        structure={structure}
+        offerings={offerings}
+        cloudLabels={challengeCloud.labels}
       />
 
       {/* THE ANCHOR — off-white break */}
