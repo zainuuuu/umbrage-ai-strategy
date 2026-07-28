@@ -12,8 +12,8 @@
       "attribution": "Umbrage is an AI-execution arm of Bain & Company."
     },
     "closing": {
-      "_status": "DRAFT copy \u2014 confirm or replace. This is the closing resolution line, not a CTA.",
-      "headline": "Wherever you're starting from, there's a next step.",
+      "_status": "DRAFT copy \u2014 confirm or replace. Closing resolution line, not a CTA. Distinct from the StructureReveal headline; echoes the hero's 'built to ship' refrain by design.",
+      "headline": "One roadmap. Every step, built to ship.",
       "subhead": "Find your entry point \u2014 we build the path from there."
     },
     "brand": {
@@ -80,6 +80,11 @@
     "headline": "What's your current challenge?",
     "columns": { "left": "Service", "middle": "When\u2026", "right": "We deliver\u2026" },
     "connector": "dotted arrow, draws left-to-right on scroll"
+  },
+
+  "structureReveal": {
+    "eyebrow": "What's Next on Your Journey?",
+    "headline": "Wherever you are, there's a next step."
   },
 
   "structure": {

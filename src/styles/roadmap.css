@@ -350,6 +350,129 @@
 }
 
 /* ============================================================================
+   PHASE 2 — radial scenes (ChallengeCloud, StructureReveal)
+   Static; layered <g> groups so Phase 3 can animate ring / center / spokes / layers.
+   ============================================================================ */
+
+/* Shared section layout: stacked mobile-first (text above, figure below). */
+.ai-roadmap .cloud__grid,
+.ai-roadmap .structure__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+  align-items: center;
+}
+.ai-roadmap .cloud__headline,
+.ai-roadmap .structure__headline {
+  font-size: var(--fs-heading);
+  font-weight: var(--fw-bold);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  margin-top: var(--space-2);
+  max-width: 20ch;
+}
+.ai-roadmap .cloud__body {
+  font-size: var(--fs-lead);
+  line-height: 1.55;
+  color: var(--onyx-2);
+  margin-top: var(--space-4);
+  max-width: 46ch;
+}
+.ai-roadmap .cloud__svg,
+.ai-roadmap .structure__svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ChallengeCloud SVG */
+.ai-roadmap .cloud-ring { fill: none; stroke: var(--savoy); stroke-width: 0.75; }
+.ai-roadmap .cloud-spoke { stroke: var(--savoy-6); stroke-width: 0.75; }
+.ai-roadmap .cloud-label {
+  font-family: var(--font-display);
+  font-weight: var(--fw-regular);
+  font-size: 13px;
+  fill: var(--onyx-1);
+}
+.ai-roadmap .cloud-center-text {
+  font-family: var(--font-display);
+  font-weight: var(--fw-semibold);
+  font-size: 20px;
+  fill: #fff;
+}
+
+/* StructureReveal — faded cloud echo */
+.ai-roadmap .struct-cloud-bg { opacity: 0.12; }
+.ai-roadmap .struct-cloud-bg .cloud-label { font-size: 10px; fill: var(--savoy-2); }
+
+/* StructureReveal — rings + core */
+.ai-roadmap .ring-band { fill: none; }
+.ai-roadmap .ring-band--1 { stroke: var(--savoy-8); }
+.ai-roadmap .ring-band--2 { stroke: var(--savoy-7); }
+.ai-roadmap .ring-band--3 { stroke: var(--savoy-6); }
+.ai-roadmap .ring-core { fill: var(--savoy); }
+.ai-roadmap .ring-core-name {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: 12px;
+  fill: #fff;
+}
+.ai-roadmap .ring-core-tag {
+  font-family: var(--font-display);
+  font-weight: var(--fw-regular);
+  font-size: 8.5px;
+  fill: var(--savoy-1);
+}
+
+/* StructureReveal — pills + leaders */
+.ai-roadmap .struct-pill { fill: var(--onyx); stroke: var(--savoy-6); stroke-width: 1; }
+.ai-roadmap .struct-pill-text {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  fill: var(--savoy-2);
+}
+.ai-roadmap .struct-leader { stroke: var(--savoy-6); stroke-width: 0.75; fill: none; }
+.ai-roadmap .struct-leader--entry { stroke: var(--savoy-4); stroke-dasharray: 3 3; }
+.ai-roadmap .struct-arrow-head { fill: var(--savoy-4); }
+
+/* StructureReveal — AI Prequel card */
+.ai-roadmap .prequel-card { fill: var(--onyx); stroke: var(--savoy-5); stroke-width: 1; }
+.ai-roadmap .prequel-card-name {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: 13px;
+  fill: #fff;
+}
+.ai-roadmap .prequel-card-tag {
+  font-family: var(--font-display);
+  font-weight: var(--fw-regular);
+  font-size: 10px;
+  fill: var(--onyx-2);
+}
+
+/* StructureReveal — offering list */
+.ai-roadmap .structure__list { list-style: none; margin: var(--space-4) 0 0; padding: 0; }
+.ai-roadmap .structure__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  border-top: 1px solid var(--hairline-on-dark);
+}
+.ai-roadmap .structure__item:last-child { border-bottom: 1px solid var(--hairline-on-dark); }
+.ai-roadmap .structure__item-name { font-size: var(--fs-lead); font-weight: var(--fw-semibold); }
+.ai-roadmap .icon-slot { flex: 0 0 auto; width: 28px; height: 28px; }
+.ai-roadmap .icon-slot__frame { fill: none; stroke: var(--onyx-4); stroke-width: 1.25; }
+.ai-roadmap .icon-slot__mark { fill: var(--savoy-4); }
+
+/* Two-column from md up: intro left, figure right. Cap figure width so it doesn't dominate. */
+@media (min-width: 900px) {
+  .ai-roadmap .cloud__grid { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: var(--space-6); }
+  .ai-roadmap .structure__grid { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: var(--space-6); }
+}
+
+/* ============================================================================
    RESPONSIVE — tablet / desktop
    ============================================================================ */
 @media (min-width: 768px) {
