@@ -1,0 +1,403 @@
+/* ============================================================================
+   ROADMAP PAGE STYLES — all scoped under .ai-roadmap (no app-global leakage).
+   Phase 1: static, flat color only (no gradients), mobile-first.
+   ============================================================================ */
+
+/* --- Local reset (scoped) --- */
+.ai-roadmap *,
+.ai-roadmap *::before,
+.ai-roadmap *::after { box-sizing: border-box; }
+
+.ai-roadmap { margin: 0; padding: 0; overflow-x: hidden; }
+
+.ai-roadmap h1,
+.ai-roadmap h2,
+.ai-roadmap h3,
+.ai-roadmap p { margin: 0; }
+
+.ai-roadmap .sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}
+
+/* --- Section shell / surfaces --- */
+.ai-roadmap .section-shell {
+  display: block;
+  padding: var(--section-pad-y) var(--page-pad);
+}
+.ai-roadmap .section-shell__inner {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  width: 100%;
+}
+.ai-roadmap .section-shell--onyx {
+  background: var(--ground);
+  color: var(--text-on-dark);
+}
+.ai-roadmap .section-shell--break {
+  background: var(--ground-break);
+  color: var(--text-on-light);
+}
+
+/* --- Section marker (mono eyebrow over a hairline rule that runs 80px past) --- */
+.ai-roadmap .section-marker {
+  display: inline-block;
+  margin-bottom: var(--space-3);
+}
+.ai-roadmap .section-marker__label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--fs-eyebrow);
+  font-weight: var(--fw-regular);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent-primary);
+}
+.ai-roadmap .section-marker__rule {
+  display: block;
+  height: 1px;
+  margin-top: 12px;
+  width: calc(100% + var(--section-marker-overrun)); /* 80px past the text on the right */
+  background: var(--accent-primary);
+}
+.ai-roadmap .section-marker--center { text-align: center; }
+.ai-roadmap .section-marker--center .section-marker__rule {
+  width: calc(100% + (2 * var(--section-marker-overrun)));
+  margin-left: calc(-1 * var(--section-marker-overrun));
+}
+.ai-roadmap .section-marker--blush .section-marker__label,
+.ai-roadmap .section-marker--blush .section-marker__rule { color: var(--accent-secondary); background: var(--accent-secondary); }
+.ai-roadmap .section-marker--blush .section-marker__label { background: none; }
+.ai-roadmap .section-marker--bain .section-marker__label { color: var(--partnership-accent); background: none; }
+.ai-roadmap .section-marker--bain .section-marker__rule { background: var(--partnership-accent); }
+
+/* --- Hero --- */
+.ai-roadmap .hero {
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.ai-roadmap .hero__headline {
+  font-size: var(--fs-display);
+  font-weight: var(--fw-black);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  max-width: 16ch;
+}
+.ai-roadmap .hero__subhead {
+  font-size: var(--fs-subhead);
+  font-weight: var(--fw-light);
+  line-height: 1.35;
+  color: var(--onyx-2);
+  max-width: 40ch;
+  margin-top: var(--space-4);
+}
+.ai-roadmap .hero__attribution {
+  font-family: var(--font-mono);
+  font-size: var(--fs-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--savoy-3);
+  margin-top: var(--space-4);
+}
+.ai-roadmap .hero__scroll-cue {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-6);
+  color: var(--onyx-4);
+}
+.ai-roadmap .hero__scroll-cue-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+.ai-roadmap .hero__scroll-cue-line {
+  width: 56px; height: 1px;
+  background: var(--onyx-4);
+}
+
+/* --- Scene placeholders (Phase 2 scenes) --- */
+.ai-roadmap .scene-placeholder {
+  min-height: 78vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-2);
+  padding: var(--space-5) var(--space-3);
+  border: 1px dashed var(--card-border-on-dark);
+  border-radius: var(--radius-card);
+  margin-top: var(--space-4);
+}
+.ai-roadmap .scene-placeholder__tag {
+  font-family: var(--font-mono);
+  font-size: var(--fs-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--savoy-3);
+}
+.ai-roadmap .scene-placeholder__title {
+  font-size: var(--fs-heading);
+  font-weight: var(--fw-bold);
+}
+.ai-roadmap .scene-placeholder__note,
+.ai-roadmap .scene-placeholder__copy {
+  max-width: 52ch;
+  color: var(--onyx-3);
+  font-size: var(--fs-lead);
+}
+.ai-roadmap .scene-placeholder__copy { color: var(--savoy-2); font-weight: var(--fw-semibold); }
+
+/* --- Challenge matrix (anchor) --- */
+.ai-roadmap .matrix__headline {
+  font-size: var(--fs-section);
+  font-weight: var(--fw-bold);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  margin-bottom: var(--space-5);
+  max-width: 22ch;
+}
+.ai-roadmap table.matrix {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+.ai-roadmap table.matrix thead th {
+  font-family: var(--font-mono);
+  font-size: var(--fs-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--savoy-3); /* light Savoy — legible mono caps on Onyx */
+  font-weight: var(--fw-regular);
+  padding: 0 var(--space-3) var(--space-2);
+  border-bottom: 1px solid var(--hairline-on-dark);
+  vertical-align: bottom;
+}
+.ai-roadmap .matrix__row { border-bottom: 1px solid var(--hairline-on-dark); }
+.ai-roadmap table.matrix td,
+.ai-roadmap table.matrix tbody th {
+  padding: var(--space-4) var(--space-3);
+  vertical-align: top;
+  font-weight: var(--fw-regular);
+}
+.ai-roadmap .matrix__service { width: 26%; }
+.ai-roadmap .matrix__service-name {
+  display: block;
+  font-size: var(--fs-lead);
+  font-weight: var(--fw-bold);
+  color: var(--text-on-dark);
+}
+.ai-roadmap .matrix__service-descriptor {
+  display: block;
+  margin-top: var(--space-1);
+  font-size: 0.9375rem;
+  color: var(--onyx-3); /* ~7:1 on Onyx */
+}
+.ai-roadmap .matrix__when {
+  width: 26%;
+  font-size: var(--fs-lead);
+  font-weight: var(--fw-semibold);
+  color: var(--savoy-2); /* light Savoy accent, AA on Onyx */
+}
+.ai-roadmap .matrix__connector-col { width: 80px; }
+.ai-roadmap .matrix__connector { width: 80px; }
+.ai-roadmap .matrix__deliver { color: var(--text-on-dark); }
+.ai-roadmap .matrix__deliver-text { display: block; }
+.ai-roadmap .matrix__deliver .metric-callout { margin-bottom: var(--space-1); }
+
+/* Static dotted connector (draws L->R in the motion layer, Phase 3) */
+.ai-roadmap .dotted-connector {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.ai-roadmap .dotted-connector__dots {
+  flex: 1;
+  height: 0;
+  border-top: 2px dotted var(--savoy-3);
+}
+.ai-roadmap .dotted-connector__arrow {
+  width: 0; height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 8px solid var(--savoy);
+}
+
+/* --- Service section --- */
+.ai-roadmap .service__head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+}
+.ai-roadmap .service__index {
+  font-family: var(--font-mono);
+  font-size: var(--fs-eyebrow);
+  color: var(--onyx-4);
+  letter-spacing: 0.1em;
+}
+.ai-roadmap .service__challenge {
+  font-size: var(--fs-section);
+  font-weight: var(--fw-black);
+  line-height: 1.03;
+  letter-spacing: -0.02em;
+  max-width: 20ch;
+  margin-top: var(--space-2);
+}
+.ai-roadmap .service__tagline {
+  font-size: var(--fs-subhead);
+  font-weight: var(--fw-light);
+  color: var(--savoy-2);
+  margin-top: var(--space-3);
+  max-width: 32ch;
+}
+.ai-roadmap .service__value {
+  font-size: var(--fs-lead);
+  line-height: 1.55;
+  color: var(--onyx-2);
+  margin-top: var(--space-4);
+  max-width: 60ch;
+}
+.ai-roadmap .service__outcome {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--hairline-on-dark);
+  max-width: 60ch;
+}
+.ai-roadmap .service__outcome-text {
+  font-size: var(--fs-lead);
+  color: var(--text-on-dark);
+  font-weight: var(--fw-semibold);
+}
+.ai-roadmap .service__note {
+  margin-top: var(--space-4);
+  font-family: var(--font-mono);
+  font-size: var(--fs-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--savoy-4);
+}
+
+/* --- Embedded Experts (alongside / offset variant) --- */
+.ai-roadmap .service--alongside {
+  border-top: 1px solid var(--hairline-on-dark);
+  border-bottom: 1px solid var(--hairline-on-dark);
+}
+.ai-roadmap .alongside__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+}
+.ai-roadmap .alongside__descriptor {
+  font-size: var(--fs-subhead);
+  font-weight: var(--fw-light);
+  color: var(--blush-2);
+  margin-top: var(--space-3);
+  max-width: 24ch;
+}
+.ai-roadmap .alongside__body { align-self: center; }
+.ai-roadmap .service--alongside .service__challenge { color: var(--text-on-dark); }
+
+/* --- Metric callout (Aptos Serif) --- */
+.ai-roadmap .metric-callout { display: flex; align-items: baseline; gap: var(--space-2); flex-wrap: wrap; }
+.ai-roadmap .metric-callout__value {
+  font-family: var(--font-editorial);
+  font-size: var(--fs-heading);
+  font-weight: var(--fw-bold);
+  line-height: 1;
+  color: var(--accent-primary);
+  letter-spacing: -0.01em;
+}
+.ai-roadmap .section-shell--break .metric-callout__value { color: var(--savoy-6); }
+.ai-roadmap .metric-callout__label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--onyx-4);
+}
+
+/* --- Closing resolution --- */
+.ai-roadmap .closing {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.ai-roadmap .closing__headline {
+  font-size: var(--fs-headline);
+  font-weight: var(--fw-black);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  max-width: 18ch;
+}
+.ai-roadmap .closing__subhead {
+  font-size: var(--fs-subhead);
+  font-weight: var(--fw-light);
+  line-height: 1.35;
+  color: var(--onyx-2);
+  max-width: 40ch;
+  margin-top: var(--space-4);
+}
+
+/* ============================================================================
+   RESPONSIVE — tablet / desktop
+   ============================================================================ */
+@media (min-width: 768px) {
+  .ai-roadmap .alongside__grid {
+    grid-template-columns: minmax(240px, 340px) 1fr;
+    gap: var(--space-6);
+  }
+}
+
+/* Matrix collapses to stacked, labeled rows below md (keeps the same DOM/table) */
+@media (max-width: 767px) {
+  .ai-roadmap table.matrix,
+  .ai-roadmap table.matrix tbody,
+  .ai-roadmap table.matrix tr,
+  .ai-roadmap table.matrix td,
+  .ai-roadmap table.matrix tbody th { display: block; width: 100%; }
+  .ai-roadmap table.matrix thead { display: none; }
+  .ai-roadmap .matrix__row {
+    padding: var(--space-3) 0;
+    border-bottom: 1px solid var(--hairline-on-dark);
+  }
+  .ai-roadmap table.matrix td,
+  .ai-roadmap table.matrix tbody th { padding: var(--space-1) 0; }
+  .ai-roadmap .matrix__when::before,
+  .ai-roadmap .matrix__deliver::before {
+    content: attr(data-label);
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--savoy-3);
+    margin-bottom: 4px;
+  }
+  /* Stacked: the connector spans full width as a flow line from "when" -> "we deliver". */
+  .ai-roadmap .matrix__connector { padding: 6px 0 10px; }
+}
+
+/* ============================================================================
+   REDUCED MOTION — Phase 1 has no motion, but honor the preference defensively.
+   ============================================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .ai-roadmap *,
+  .ai-roadmap *::before,
+  .ai-roadmap *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
