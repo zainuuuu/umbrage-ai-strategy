@@ -298,12 +298,17 @@ html, body {
 
 /* ============================================================================
    SectionGap — section two (Figma node 3422:2351). Light tonal break (Onyx-1)
-   after the dark hero. Static final state: scattered low-opacity labels
-   (bottom layer) < heavily-blurred Onyx-1 rectangle (clears the center) <
-   the question (top layer, fully visible). left/top/width/height on the
-   labels/blur/question come from inline styles (per-instance data from
-   roadmap-content.json's Figma px, converted to percentages of the 1920x1080
-   reference frame) — the CSS here only owns the shared type/color treatment.
+   after the dark hero. Static final state (also the reduced-motion / no-JS
+   state): scattered low-opacity labels (bottom layer) < heavily-blurred
+   Onyx-1 rectangle (clears the center) < the question (top layer, fully
+   visible). left/top/width/height on the labels/blur/question come from
+   inline styles (per-instance data from roadmap-content.json's Figma px,
+   converted to percentages of the 1920x1080 reference frame) — the CSS here
+   only owns the shared type/color treatment.
+
+   Centering uses the standalone CSS `translate` property (not the `transform`
+   shorthand) specifically so the motion pass can animate `scale`/`filter`
+   independently via GSAP without fighting the centering offset.
    ============================================================================ */
 .ai-strategy .section-gap {
   position: relative;
@@ -320,12 +325,13 @@ html, body {
 }
 .ai-strategy .section-gap__label {
   position: absolute;
-  transform: translate(-50%, -50%);
+  translate: -50% -50%;
+  will-change: opacity, scale, color;
   font-family: var(--font-display);
   font-weight: var(--fw-semibold);
   font-size: var(--fs-gap-label); /* 21px at 1920 */
   letter-spacing: -0.42px;
-  color: var(--onyx);
+  color: var(--onyx); /* end state — matches ONYX in SectionGap.jsx exactly */
   opacity: 0.4;
   white-space: nowrap;
 }
@@ -334,13 +340,15 @@ html, body {
   z-index: 2;
   background: var(--onyx-1);
   filter: blur(125px);
+  will-change: opacity, scale;
   pointer-events: none;
 }
 .ai-strategy .section-gap__question {
   position: absolute;
   z-index: 3;
   margin: 0;
-  transform: translate(-50%, -50%);
+  translate: -50% -50%;
+  will-change: opacity, scale, filter, clip-path;
   font-family: var(--font-display);
   font-weight: var(--fw-semibold);
   font-size: var(--fs-gap-question); /* 64px at 1920 */
@@ -348,6 +356,10 @@ html, body {
   color: var(--onyx);
   text-align: center;
   white-space: nowrap;
+}
+.ai-strategy .section-gap__question-word {
+  display: inline-block;
+  will-change: opacity, transform;
 }
 
 /* ============================================================================
