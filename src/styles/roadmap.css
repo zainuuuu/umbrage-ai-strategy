@@ -423,6 +423,7 @@ html, body {
    ============================================================================ */
 .ai-strategy .section-gap-2 {
   position: relative;
+  z-index: 1; /* below .section-ai-delivery (2) — the cover-transition pin relies on paint order between these two siblings */
   width: 100%;
   min-height: 100vh;
   overflow: hidden;
@@ -483,6 +484,35 @@ html, body {
   color: var(--onyx);
   text-align: center;
   white-space: nowrap;
+}
+
+/* ============================================================================
+   SectionAiDelivery — section four (meta.sectionOrder id "ai-delivery").
+   STEP A ONLY: the minimal dark shell used as the cover target for the
+   gap-2 -> ai-delivery pin/cover transition (see SectionGap2.jsx for the
+   pin). Just the top transition-panel seam + the shared 3-rule vertical
+   grid on a plain Onyx ground — cards/connectors/icons arrive in later
+   steps. Height is proportional to the 1920-wide reference frame's real
+   content height (4254px), same width-driven scaling model used for type
+   elsewhere on this page (coefficient = px / 19.2, expressed here directly
+   as vw so the whole frame's internal proportions hold as viewport width
+   changes).
+   z-index 2: above .section-gap-2 (1) — see that file for why.
+   ============================================================================ */
+.ai-strategy .section-ai-delivery {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  min-height: 221.5625vw; /* 4254 / 1920 * 100vw */
+  background: var(--onyx);
+  will-change: transform;
+}
+.ai-strategy .section-ai-delivery__rule {
+  position: absolute;
+  top: var(--space-80); /* below the top seam, not through it */
+  bottom: 0;
+  width: 1px;
+  background: var(--hairline-on-dark);
 }
 
 /* ============================================================================
