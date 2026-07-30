@@ -7,25 +7,73 @@
     "renderCtasNote": "CTAs are intentionally omitted on this standalone page. Once merged into the wider site, header/footer/CTA chrome is provided by the site. CTA labels are retained in offerings[] for future use but must NOT render here.",
     "deployHost": "TBD — spec said Cloudflare Pages, but the live URLs respond as server: CloudFront (AWS). Does not block the standalone build; resolve before merge.",
     "hero": {
-      "headline": "AI-fluent. Outcome-driven. Built to ship.",
-      "subhead": "Your front door to AI delivery. Wherever you are on your AI journey, there's a next step \u2014 and a service designed to meet you there.",
-      "attribution": "Umbrage is an AI-execution arm of Bain & Company."
+      "eyebrow": "AI DELIVERY SYSTEM",
+      "headline": "Enterprise AI, delivered end-to-end.",
+      "subhead": "Strategy to production, data to shipped product, one team that takes you the whole way. Wherever you're starting, this is how it gets built."
     },
+    "nav": {
+      "items": ["Solutions", "AI Delivery System", "The Studio", "Careers", "Contact"],
+      "utility": [
+        { "label": "Get AI Ready", "type": "secondary" },
+        { "label": "EN", "type": "primary" }
+      ]
+    },
+    "sectionOrder": ["hero", "gap-where-are-you", "prequel-intro", "ai-delivery", "challenge-matrix", "footer"],
     "closing": {
-      "_status": "DRAFT copy \u2014 confirm or replace. Closing resolution line, not a CTA. Distinct from the StructureReveal headline; echoes the hero's 'built to ship' refrain by design.",
+      "_status": "DRAFT copy — confirm or replace. Closing resolution line, not a CTA. Distinct from the StructureReveal headline; echoes the hero's 'built to ship' refrain by design.",
       "headline": "One roadmap. Every step, built to ship.",
-      "subhead": "Find your entry point \u2014 we build the path from there."
+      "subhead": "Find your entry point — we build the path from there."
     },
     "brand": {
       "_source": "Confirmed from the 2026 Umbrage Visual Style Guide. Palette = Savoy / Blush / Onyx + Bain Red. Type = Aptos family. Font-loading method (@font-face / files) still to confirm from the site repo at merge; for standalone dev, self-host Aptos (Aptos, Aptos Serif, Aptos Mono) or use a close fallback.",
       "color": {
-        "savoy": { "1": "#E8EDFC", "2": "#BBCAF6", "3": "#8EA7EF", "4": "#7895EC", "5": "#4B72E6", "base": "#1E4FE0", "6": "#183FB3", "7": "#122F86", "8": "#0C205A", "9": "#06102D" },
-        "blush": { "1": "#FFEBF1", "2": "#FFC3D6", "3": "#FF9ABB", "4": "#FF86AD", "5": "#FF5E92", "base": "#FF3677", "6": "#CC2B5F", "7": "#992047", "8": "#661630", "9": "#330B18" },
-        "onyx": { "1": "#F7F7F7", "2": "#D6D9DC", "3": "#B8BBBF", "4": "#7C7E87", "5": "#40424B", "base": "#030511" },
-        "bainRed": { "1": "#FFF7F0", "2": "#FFD5C0", "3": "#FFBFA8", "4": "#FF8A78", "5": "#FF4B48", "6": "#FF0025", "base": "#CC0000", "8": "#9C0000", "9": "#6A0000", "10": "#410000" },
+        "savoy": {
+          "1": "#E8EDFC",
+          "2": "#BBCAF6",
+          "3": "#8EA7EF",
+          "4": "#7895EC",
+          "5": "#4B72E6",
+          "base": "#1E4FE0",
+          "6": "#183FB3",
+          "7": "#122F86",
+          "8": "#0C205A",
+          "9": "#06102D"
+        },
+        "blush": {
+          "1": "#FFEBF1",
+          "2": "#FFC3D6",
+          "3": "#FF9ABB",
+          "4": "#FF86AD",
+          "5": "#FF5E92",
+          "base": "#FF3677",
+          "6": "#CC2B5F",
+          "7": "#992047",
+          "8": "#661630",
+          "9": "#330B18"
+        },
+        "onyx": {
+          "1": "#F7F7F7",
+          "2": "#D6D9DC",
+          "3": "#B8BBBF",
+          "4": "#7C7E87",
+          "5": "#40424B",
+          "base": "#030511"
+        },
+        "bainRed": {
+          "1": "#FFF7F0",
+          "2": "#FFD5C0",
+          "3": "#FFBFA8",
+          "4": "#FF8A78",
+          "5": "#FF4B48",
+          "6": "#FF0025",
+          "base": "#CC0000",
+          "8": "#9C0000",
+          "9": "#6A0000",
+          "10": "#410000"
+        },
         "roles": {
-          "ground": "onyx.base #030511 \u2014 default dark ground for most of the page",
-          "groundBreak": "onyx.1 #F7F7F7 \u2014 one off-white contrast break",
+          "ground": "onyx.base #030511 — default dark ground for most of the page",
+          "groundBreak": "onyx.1 #F7F7F7 — one off-white contrast break",
           "accentPrimary": "savoy.base #1E4FE0",
           "accentSecondary": "blush.base #FF3677",
           "partnershipAccent": "bainRed.6 #FF0025 for AA text on Onyx; bainRed.base for large accents only",
@@ -34,67 +82,145 @@
         }
       },
       "type": {
-        "display": { "family": "Aptos", "weights": ["Light", "Regular", "Semibold", "Bold", "Black"], "use": "display + body" },
-        "editorial": { "family": "Aptos Serif", "use": "sparingly \u2014 accents and large metric callouts only (e.g. the outcome stats)" },
-        "utility": { "family": "Aptos Mono", "use": "eyebrows, captions, data labels \u2014 uppercase, wide tracking" },
-        "scale": { "display": "120px", "headline": "88px", "section": "56px", "heading": "44px", "subhead": "32px", "lead": "18px", "body": "16px" },
-        "rules": "Body 16\u201322px regular; bold reserved for headings and lead-in lines, never whole paragraphs. Eyebrows: mono, uppercase, spaced. Headings: Title Case. Buttons/labels: sentence case. (Keep headline COPY exactly as written in this file even where it reads sentence-case.)",
-        "loading": "TBD \u2014 confirm Aptos web font files / @font-face from the site repo at merge."
+        "display": {
+          "family": "Aptos",
+          "weights": [
+            "Light",
+            "Regular",
+            "Semibold",
+            "Bold",
+            "Black"
+          ],
+          "use": "display + body"
+        },
+        "editorial": {
+          "family": "Aptos Serif",
+          "use": "sparingly — accents and large metric callouts only (e.g. the outcome stats)"
+        },
+        "utility": {
+          "family": "Aptos Mono",
+          "use": "eyebrows, captions, data labels — uppercase, wide tracking"
+        },
+        "scale": {
+          "display": "120px",
+          "headline": "88px",
+          "section": "56px",
+          "heading": "44px",
+          "subhead": "32px",
+          "lead": "18px",
+          "body": "16px"
+        },
+        "rules": "Body 16–22px regular; bold reserved for headings and lead-in lines, never whole paragraphs. Eyebrows: mono, uppercase, spaced. Headings: Title Case. Buttons/labels: sentence case. (Keep headline COPY exactly as written in this file even where it reads sentence-case.)",
+        "loading": "TBD — confirm Aptos web font files / @font-face from the site repo at merge."
       },
       "surfaces": [
-        "Onyx default \u2014 white type, Savoy & Blush accents",
-        "Off-white break \u2014 charcoal type, Savoy eyebrow (use once for contrast)",
-        "Partnership close \u2014 Bain Red 60 on Onyx (only if a partnership section is added)"
+        "Onyx default — white type, Savoy & Blush accents",
+        "Off-white break — charcoal type, Savoy eyebrow (use once for contrast)",
+        "Partnership close — Bain Red 60 on Onyx (only if a partnership section is added)"
       ],
-      "radius": { "card": "16px", "photo": "20px" },
-      "gap": { "cardMin": "16px" },
+      "radius": {
+        "card": "16px",
+        "photo": "20px"
+      },
+      "gap": {
+        "cardMin": "16px"
+      },
       "sectionMarker": "Uppercase Aptos Mono eyebrow over a hairline rule. Left-justified: rule extends 80px past the text on the right. Centered: 80px on both sides. Savoy is default; Blush / Bain Red flag their own sections.",
-      "buttons": { "primary": "no fill, solid on hover, no stroke", "secondary": "pill, 1px stroke", "tertiary": "text, leading/trailing icon", "note": "Not rendered on this page (see meta.renderCtas)." },
-      "colorRule": "Flat color everywhere. The ONLY gradient in the system is the Praxis\u00ae wordmark (Blush into violet, clipped to the word) \u2014 not used on this page. Do NOT use gradients in backgrounds, cards, or the motion layer.",
-      "mosaicGrid": "Signature background motif: a gradient rendered as a grid of \u22658 equal-width columns, with Savoy + Blush glow coming through the Onyx base, tiling continuously between content areas. Glow shape adapts to context. Candidate background for the hero and challenge-cloud scenes.",
-      "voice": "Direct, confident, no hype. Lead with the outcome and the number. Short declaratives (\u201cBuilt to ship.\u201d). Avoid \u201cunlock/empower/revolutionize\u201d, ALL-CAPS, and emoji.",
-      "logo": "Full Umbrage wordmark + \u201cPart of Bain & Company\u201d at rest; reduces to the helmet mark on scroll. This is page chrome \u2014 not this standalone page's concern until merge."
-    }
+      "buttons": {
+        "primary": "no fill, solid on hover, no stroke",
+        "secondary": "pill, 1px stroke",
+        "tertiary": "text, leading/trailing icon",
+        "note": "Not rendered on this page (see meta.renderCtas)."
+      },
+      "colorRule": "Flat color everywhere. The ONLY gradient in the system is the Praxis® wordmark (Blush into violet, clipped to the word) — not used on this page. Do NOT use gradients in backgrounds, cards, or the motion layer.",
+      "mosaicGrid": "Signature background motif: a gradient rendered as a grid of ≥8 equal-width columns, with Savoy + Blush glow coming through the Onyx base, tiling continuously between content areas. Glow shape adapts to context. Candidate background for the hero and challenge-cloud scenes.",
+      "voice": "Direct, confident, no hype. Lead with the outcome and the number. Short declaratives (“Built to ship.”). Avoid “unlock/empower/revolutionize”, ALL-CAPS, and emoji.",
+      "logo": "Full Umbrage wordmark + “Part of Bain & Company” at rest; reduces to the helmet mark on scroll. This is page chrome — not this standalone page's concern until merge."
+    },
+    "_serviceContentNote": "Per-service sectionSubtitle/valueHeader/body/capabilities/proof sourced from the six detail slides. Proof cards default to ANONYMIZED (clientCleared:false) — do not render client names or logos until each is cleared. Delivery System proof art is WIP."
   },
-
   "challengeCloud": {
     "eyebrow": "Your AI Transformation Journey",
     "headline": "Your journey will touch a lot: strategy, data, architecture, delivery, adoption, governance, and more.",
     "body": "Whether you need to identify the right opportunities, build a production-ready AI product, or establish the capability to scale AI across the enterprise, we meet you where you are and support what comes next.",
     "center": "Where are you on your AI Transformation Journey?",
     "labels": [
-      "Cost unpredictability", "IP & copyright risk", "Unclear ownership", "Competitive pressure",
-      "AI governance framework", "Rapidly shifting landscape", "Security & compliance", "Disconnected vendors",
-      "Model drift", "Technical debt", "Procurement bottlenecks", "Third-party risk", "Legacy systems",
-      "Use case prioritization", "Leadership alignment", "Bias & fairness", "Model explainability",
-      "Regulatory uncertainty", "Hallucination risk", "Integration complexity", "Executive turnover",
-      "Customer trust", "Vendor lock-in risk", "Scalability architecture", "PoC-to-production failure",
-      "Siloed data", "Shadow AI usage", "Cloud & compute constraints", "Data privacy exposure",
-      "Change management fatigue", "Change resistance", "Data quality & governance",
-      "Documentation deficits", "Talent gaps", "AI literacy", "ROI measurement"
+      "Cost unpredictability",
+      "IP & copyright risk",
+      "Unclear ownership",
+      "Competitive pressure",
+      "AI governance framework",
+      "Rapidly shifting landscape",
+      "Security & compliance",
+      "Disconnected vendors",
+      "Model drift",
+      "Technical debt",
+      "Procurement bottlenecks",
+      "Third-party risk",
+      "Legacy systems",
+      "Use case prioritization",
+      "Leadership alignment",
+      "Bias & fairness",
+      "Model explainability",
+      "Regulatory uncertainty",
+      "Hallucination risk",
+      "Integration complexity",
+      "Executive turnover",
+      "Customer trust",
+      "Vendor lock-in risk",
+      "Scalability architecture",
+      "PoC-to-production failure",
+      "Siloed data",
+      "Shadow AI usage",
+      "Cloud & compute constraints",
+      "Data privacy exposure",
+      "Change management fatigue",
+      "Change resistance",
+      "Data quality & governance",
+      "Documentation deficits",
+      "Talent gaps",
+      "AI literacy",
+      "ROI measurement"
     ]
   },
-
   "matrix": {
     "eyebrow": "Where You Can Begin",
     "headline": "What's your current challenge?",
-    "columns": { "left": "Service", "middle": "When\u2026", "right": "We deliver\u2026" },
+    "columns": {
+      "left": "Service",
+      "middle": "When…",
+      "right": "We deliver…"
+    },
     "connector": "dotted arrow, draws left-to-right on scroll"
   },
-
   "structureReveal": {
     "eyebrow": "What's Next on Your Journey?",
     "headline": "Wherever you are, there's a next step."
   },
-
   "structure": {
     "entry": "ai-prequel",
-    "container": { "id": "ai-product-delivery-system", "houses": ["data-ai-foundations", "legacy-modernization", "end-to-end-ai-product-development"], "metaphor": "radial/concentric \u2014 system at core, three services as rings around it (see slide 2)" },
+    "container": {
+      "id": "ai-product-delivery-system",
+      "houses": [
+        "data-ai-foundations",
+        "legacy-modernization",
+        "end-to-end-ai-product-development"
+      ],
+      "metaphor": "radial/concentric — system at core, three services as rings around it (see slide 2)"
+    },
     "alongside": "embedded-experts",
-    "excluded": ["digital-factory"],
-    "displayOrder": ["ai-prequel", "end-to-end-ai-product-development", "legacy-modernization", "data-ai-foundations", "ai-product-delivery-system", "embedded-experts"]
+    "excluded": [
+      "digital-factory"
+    ],
+    "displayOrder": [
+      "ai-prequel",
+      "end-to-end-ai-product-development",
+      "legacy-modernization",
+      "data-ai-foundations",
+      "ai-product-delivery-system",
+      "embedded-experts"
+    ]
   },
-
   "offerings": [
     {
       "id": "ai-prequel",
@@ -102,12 +228,54 @@
       "iconSlot": "prequel-mark",
       "role": "entry",
       "descriptor": "The work that must be true before AI ships.",
-      "challenge": { "short": "You need clarity", "matrix": "You need clarity and direction" },
+      "challenge": {
+        "short": "You need clarity",
+        "matrix": "You need clarity and direction"
+      },
       "tagline": "The work that must be true before AI ships.",
       "valueStory": "We find where AI can create real value, confirm your data and systems can carry it, and leave you with a roadmap you can actually build against.",
       "outcome": "A prioritized roadmap, and the confidence to know exactly where to invest first.",
       "outcomeStat": null,
-      "cta": { "label": "Get AI ready", "href": null }
+      "cta": {
+        "label": "Get AI ready",
+        "href": null
+      },
+      "sectionSubtitle": "When you need clarity and direction",
+      "valueHeader": "We help identify where AI can create measurable value for your business",
+      "body": "Assess where you stand today and map the clearest path to invest, prioritize, and move you forward.",
+      "capabilities": [
+        {
+          "term": "AI Strategy",
+          "desc": "for a path to results"
+        },
+        {
+          "term": "AI Readiness",
+          "desc": "assessment & next steps"
+        },
+        {
+          "term": "Data Readiness",
+          "desc": "to prepare quality & access"
+        },
+        {
+          "term": "Opportunity Portfolio",
+          "desc": "defines value & feasibility"
+        },
+        {
+          "term": "Roadmap & Biz Case",
+          "desc": "to plan & deliver against"
+        },
+        {
+          "term": "Delivery Recommendations",
+          "desc": "to delivery & scale"
+        }
+      ],
+      "proof": {
+        "client": "Aviation Client",
+        "clientCleared": false,
+        "metric": "14:1",
+        "metricLabel": "14 systems, 1 master plan",
+        "description": "Turned 14 undocumented legacy systems into one vendor-ready modernization plan for an aviation client, giving clarity on what to modernize first."
+      }
     },
     {
       "id": "end-to-end-ai-product-development",
@@ -115,12 +283,54 @@
       "iconSlot": "e2e-mark",
       "role": "housed",
       "descriptor": "Builds and ships a specific AI product.",
-      "challenge": { "short": "You know what to build", "matrix": "You know what to build" },
+      "challenge": {
+        "short": "You know what to build",
+        "matrix": "You know what to build"
+      },
       "tagline": "Builds and ships a specific AI product.",
-      "valueStory": "We take it from strategy to working software, architecture through production-grade code, built so your team can own it, with knowledge transfer throughout \u2014 not at the end.",
+      "valueStory": "We take it from strategy to working software, architecture through production-grade code, built so your team can own it, with knowledge transfer throughout — not at the end.",
       "outcome": "A shipped product in market, actually being used by your users.",
       "outcomeStat": null,
-      "cta": { "label": "Let's ship it", "href": null }
+      "cta": {
+        "label": "Let's ship it",
+        "href": null
+      },
+      "sectionSubtitle": "When you know what to build",
+      "valueHeader": "We help you build and ship real AI products",
+      "body": "Take it from strategy to working software, AI-first from day one, built for users and your team.",
+      "capabilities": [
+        {
+          "term": "Product Discovery & Design",
+          "desc": "from concept to plan"
+        },
+        {
+          "term": "Custom AI Development",
+          "desc": "agents, copilots & models"
+        },
+        {
+          "term": "Enterprise Integration",
+          "desc": "built into your systems"
+        },
+        {
+          "term": "Security & Compliance",
+          "desc": "built in, not bolted on"
+        },
+        {
+          "term": "Production Deployment",
+          "desc": "in production, in use"
+        },
+        {
+          "term": "Knowledge Transfer",
+          "desc": "so your team owns it"
+        }
+      ],
+      "proof": {
+        "client": "7-Eleven (Seveny)",
+        "clientCleared": false,
+        "metric": "#6",
+        "metricLabel": "Ranking in App Store",
+        "description": "A convenience retailer's loyalty app reached #6 in the App Store (Food & Drink, Mexico), with 80,000+ active users in three weeks."
+      }
     },
     {
       "id": "legacy-modernization",
@@ -128,12 +338,57 @@
       "iconSlot": "legacy-mark",
       "role": "housed",
       "descriptor": "Ready legacy systems for AI.",
-      "challenge": { "short": "Your systems are holding you back", "matrix": "Your systems are holding you back" },
+      "challenge": {
+        "short": "Your systems are holding you back",
+        "matrix": "Your systems are holding you back"
+      },
       "tagline": "Ready legacy systems for AI.",
-      "valueStory": "We assess what you're running, re-architect for cloud-native, AI-ready infrastructure, and migrate live \u2014 without taking your operations offline.",
+      "valueStory": "We assess what you're running, re-architect for cloud-native, AI-ready infrastructure, and migrate live — without taking your operations offline.",
       "outcome": "Modernized systems, ready for AI, typically unlocking 30 to 50 percent faster release cycles.",
-      "outcomeStat": { "value": "30\u201350%", "label": "faster release cycles" },
-      "cta": { "label": "Get with the times", "href": null }
+      "outcomeStat": {
+        "value": "30–50%",
+        "label": "faster release cycles"
+      },
+      "cta": {
+        "label": "Get with the times",
+        "href": null
+      },
+      "sectionSubtitle": "When your systems are holding you back",
+      "valueHeader": "We help modernize your systems to ready them for AI",
+      "body": "Assess what you're running today and modernize it in place, without ripping out what already works.",
+      "capabilities": [
+        {
+          "term": "Portfolio Assessment",
+          "desc": "a modernization roadmap"
+        },
+        {
+          "term": "Cloud Migration",
+          "desc": "refactored & re-platformed"
+        },
+        {
+          "term": "API Enablement",
+          "desc": "modular, integrated architecture"
+        },
+        {
+          "term": "Workflow Modernization",
+          "desc": "data & experience, updated"
+        },
+        {
+          "term": "AI Embedding",
+          "desc": "features built into what exists"
+        },
+        {
+          "term": "Performance & Resilience",
+          "desc": "technical debt, reduced"
+        }
+      ],
+      "proof": {
+        "client": "Ampirical",
+        "clientCleared": false,
+        "metric": "96%",
+        "metricLabel": "Increase in velocity",
+        "description": "Increase in engineering design velocity for a substation engineering firm, layering a six-model AI stack onto existing legacy workflows. No rebuild required."
+      }
     },
     {
       "id": "data-ai-foundations",
@@ -141,12 +396,54 @@
       "iconSlot": "data-mark",
       "role": "housed",
       "descriptor": "Data, architecture, governance.",
-      "challenge": { "short": "Your data isn't ready", "matrix": "Your data isn't ready" },
+      "challenge": {
+        "short": "Your data isn't ready",
+        "matrix": "Your data isn't ready"
+      },
       "tagline": "Data, architecture, governance.",
-      "valueStory": "We get the data layer right before the build starts, unifying pipelines and governance scoped to your actual environment \u2014 not a generic checklist.",
+      "valueStory": "We get the data layer right before the build starts, unifying pipelines and governance scoped to your actual environment — not a generic checklist.",
       "outcome": "A trusted, governed data foundation every AI product you build next can actually stand on.",
       "outcomeStat": null,
-      "cta": { "label": "Trust your data", "href": null }
+      "cta": {
+        "label": "Trust your data",
+        "href": null
+      },
+      "sectionSubtitle": "When your data isn't ready",
+      "valueHeader": "We help build the data foundation your AI actually needs",
+      "body": "Get your data infrastructure right before you build on top of it: unified, governed, and ready to scale.",
+      "capabilities": [
+        {
+          "term": "Data Strategy & Architecture",
+          "desc": "the target state for your data"
+        },
+        {
+          "term": "Data Engineering",
+          "desc": "pipelines & reusable data products"
+        },
+        {
+          "term": "Data Governance",
+          "desc": "quality, lineage & ownership"
+        },
+        {
+          "term": "Knowledge Base & Search",
+          "desc": "semantic layers & retrieval"
+        },
+        {
+          "term": "Cloud & Platform Integration",
+          "desc": "built for scale"
+        },
+        {
+          "term": "Business Intelligence",
+          "desc": "dashboards & reporting, built"
+        }
+      ],
+      "proof": {
+        "client": "ConEdison",
+        "clientCleared": false,
+        "metric": "100+",
+        "metricLabel": "Vendor schemas unified",
+        "description": "Vendor data schemas unified into one system for a major U.S. utility via LLM-driven mapping — the foundation every AI product now stands on."
+      }
     },
     {
       "id": "ai-product-delivery-system",
@@ -154,12 +451,55 @@
       "iconSlot": "delivery-system-mark",
       "role": "container",
       "descriptor": "The system that ships, governs, and hands over.",
-      "challenge": { "short": "You need to scale", "matrix": "You need to scale" },
+      "challenge": {
+        "short": "You need to scale",
+        "matrix": "You need to scale"
+      },
       "tagline": "The system that ships, governs, and hands over.",
-      "valueStory": "We standardize product strategy, engineering delivery, governance, and continuous improvement into one repeatable system, built through real product work \u2014 not a framework we hand you and leave.",
+      "valueStory": "We standardize product strategy, engineering delivery, governance, and continuous improvement into one repeatable system, built through real product work — not a framework we hand you and leave.",
       "outcome": "A company-wide product operating model, set up and running, built for AI from day one.",
       "outcomeStat": null,
-      "cta": { "label": "Assess your delivery model", "href": null }
+      "cta": {
+        "label": "Assess your delivery model",
+        "href": null
+      },
+      "sectionSubtitle": "When you need to scale",
+      "valueHeader": "We help you build the operating model that scales AI delivery",
+      "body": "Redesign how you deliver AI products altogether: strategy, engineering, governance, and improvement, unified into one repeatable system.",
+      "capabilities": [
+        {
+          "term": "Lifecycle & Stage Gates",
+          "desc": "one path, opportunity to value"
+        },
+        {
+          "term": "Operating Model & Governance",
+          "desc": "roles, funding & risk"
+        },
+        {
+          "term": "Product & Agile Delivery",
+          "desc": "discovery to sprint cadence"
+        },
+        {
+          "term": "AI SDLC & Engineering",
+          "desc": "standards for code, data & models"
+        },
+        {
+          "term": "MLOps & Observability",
+          "desc": "versioning, monitoring & improvement"
+        },
+        {
+          "term": "Enablement & Tooling",
+          "desc": "playbooks & adoption"
+        }
+      ],
+      "proof": {
+        "client": "Early Warning (EWS)",
+        "clientCleared": false,
+        "metric": "35%",
+        "metricLabel": "Faster to first commit",
+        "description": "Faster prioritization-to-first-commit for a regulated payments company, unifying SDLC and PDLC into one governed operating model.",
+        "artStatus": "WIP — source slide notes 'Figure out proper art'; proof-card imagery is NOT final."
+      }
     },
     {
       "id": "embedded-experts",
@@ -167,12 +507,57 @@
       "iconSlot": "embedded-mark",
       "role": "alongside",
       "descriptor": "Within your team for immediate outcomes.",
-      "challenge": { "short": "You don't have the team", "matrix": "You don't have the team" },
+      "challenge": {
+        "short": "You don't have the team",
+        "matrix": "You don't have the team"
+      },
       "tagline": "Within your team for immediate outcomes.",
       "valueStory": "We embed Forward Deployed Engineers and Product Builders directly into your workflows, backed by our full bench across engineering, data and AI, experience design, and delivery.",
       "outcome": "A team shipping 25 to 40 percent faster, from their very first sprint.",
-      "outcomeStat": { "value": "25\u201340%", "label": "faster, from the first sprint" },
-      "cta": { "label": "Embed with experts", "href": null }
+      "outcomeStat": {
+        "value": "25–40%",
+        "label": "faster, from the first sprint"
+      },
+      "cta": {
+        "label": "Embed with experts",
+        "href": null
+      },
+      "sectionSubtitle": "When you don't have the team",
+      "valueHeader": "We help fill the missing pieces you need to ship",
+      "body": "Place senior engineers, data scientists, and product builders directly on your team.",
+      "capabilities": [
+        {
+          "term": "Forward Deployed Engineers",
+          "desc": "embedded and building"
+        },
+        {
+          "term": "Product Builders",
+          "desc": "end-to-end outcomes"
+        },
+        {
+          "term": "Data & AI",
+          "desc": "models, pipelines & infrastructure"
+        },
+        {
+          "term": "Engineering",
+          "desc": "full-stack & platform"
+        },
+        {
+          "term": "Experience Design",
+          "desc": "product & interface"
+        },
+        {
+          "term": "Product & Delivery",
+          "desc": "strategy & program management"
+        }
+      ],
+      "proof": {
+        "client": "Weatherford",
+        "clientCleared": false,
+        "metric": "4",
+        "metricLabel": "Platforms shipped",
+        "description": "Four platforms shipped within a year for an oilfield services firm, with embedded teams working side by side, in time for their annual conference."
+      }
     }
   ]
 }
