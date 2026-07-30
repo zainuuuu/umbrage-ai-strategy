@@ -19,6 +19,9 @@ the 2026 Visual Style Guide (only font-loading method and deploy host remain ope
   CloudFront` (AWS). Resolve before merge; irrelevant to the standalone build.
 - **CTAs**: intentionally NOT rendered on this page (`meta.renderCtas: false`). The wider site
   supplies header/footer/CTA chrome post-merge. Keep CTA labels in the data, render nothing.
+- **Proof cards / client naming**: every `proof` defaults to `clientCleared: false` — render
+  metric + sector + description only, NO client names or logos, until each client is confirmed
+  cleared for public use. The Delivery System proof art is WIP (`proof.artStatus`).
 
 ## Stack
 
@@ -74,10 +77,14 @@ at the closing resolution. Order follows the deck (`structure.displayOrder`), NO
 4. **Challenge matrix** (slide 3) — **the anchor.** "What's your current challenge?" Six rows:
    `Service | When you… | ·····▸ | We deliver…`. Rows stagger in; the dotted connector draws
    left-to-right per row; `outcomeStat` numbers count up (Aptos Serif).
-5. **Service deep dives** — one section per offering in `structure.displayOrder`. Each: challenge
-   statement (large) → tagline → value story → outcome (metric callout in Aptos Serif if
-   `outcomeStat`). **No CTA button.** The Delivery System section uses the radial/concentric
-   treatment from slide 2.
+5. **Service deep dives** — one section per offering in `structure.displayOrder`, following the
+   six detail slides' three-column layout. Left: `iconSlot` + `name` + `sectionSubtitle` (accent
+   "When you…"). Center: `valueHeader` (bold lead) → `body` → `capabilities` list (six `term —
+   desc` rows) → closing `outcome`. Right: a **proof card** (`proof`): rounded image slot (20px,
+   cool grade, AA scrim), big `metric` in Aptos Serif, `metricLabel`, `description`, hairline
+   divider. **No CTA button.** Proof cards render ANONYMIZED unless `proof.clientCleared` is true
+   (no client names or logos by default). The Delivery System section uses the radial/concentric
+   treatment from slide 2, and its `proof.artStatus` is WIP — placeholder art only.
 6. **Embedded Experts** — offset/alongside treatment (cross-cutting, not sequential).
 7. **Closing resolution** — the connector line completes into a final short declarative
    ("Built to ship."-style). No CTA; brand/helmet chrome comes from the site post-merge.
@@ -96,7 +103,12 @@ at the closing resolution. Order follows the deck (`structure.displayOrder`), NO
   will get its own spec + prompt.**
 - `StructureReveal` — concentric rings + six-item list + Prequel callout. **Also geometry-heavy.**
 - `ChallengeMatrix` — the anchor; rows from `offerings` (`challenge.matrix` + `outcome`).
-- `ServiceSection` — per-offering deep dive (no CTA).
+- `ServiceSection` — per-offering deep dive, three-column slide layout (no CTA). Composes
+  `CapabilityList` + `ProofCard`.
+- `CapabilityList` — six `term — desc` rows from `offering.capabilities`.
+- `ProofCard` — image slot (20px radius, cool grade, AA scrim) + Aptos-Serif `metric` +
+  `metricLabel` + `description`. Renders `client` only when `proof.clientCleared` is true; never
+  renders client logos. Honors `proof.artStatus` (WIP → placeholder art).
 - `DeliverySystemSection` — ServiceSection variant with the radial treatment.
 - `EmbeddedExpertsSection` — alongside variant.
 - `ScrollPath` — the drawing connector line (SVG `stroke-dashoffset` tied to scroll).
@@ -130,7 +142,14 @@ at the closing resolution. Order follows the deck (`structure.displayOrder`), NO
    matrix, six service sections, embedded experts, closing. Placeholders (correctly sized empty
    containers) for the two radial scenes. Responsive, no motion, no CTAs.
 2. **Static — radial scenes**: `ChallengeCloud` + `StructureReveal` with supplied geometry math.
-3. **Motion layer**: ScrollPath, cloud→structure pin, matrix connectors, count-ups, reduced-motion.
+2.6. **Static — service enrichment**: rebuild `ServiceSection` to the three-column slide layout
+   (subtitle, value header, body, capabilities, proof card); proof cards anonymized by default.
+3. **Motion layer (core)**: reduced-motion harness FIRST, then ScrollPath draw, per-scene enter
+   reveals, matrix connector draws, count-ups. The static baseline must stay fully intact under
+   `prefers-reduced-motion` and with JS disabled — animate `from` a visible default, never leave
+   content stuck hidden.
+3.5. **Motion enhancement**: the cloud→structure pin (chaos resolves into the rings). Isolated so
+   it can't compromise the core motion or the static baseline.
 4. **Polish & QA**: cross-browser, mobile, Lighthouse, side-by-side vs the deck slides.
 5. **Package for merge**: scoped styles, documented, ready as `/services/ai-roadmap`.
 
