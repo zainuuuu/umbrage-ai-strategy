@@ -141,6 +141,11 @@
     },
     "_serviceContentNote": "Per-service sectionSubtitle/valueHeader/body/capabilities/proof sourced from the six detail slides. Proof cards default to ANONYMIZED (clientCleared:false) — do not render client names or logos until each is cleared. Delivery System proof art is WIP."
   },
+  "gapTwo": {
+    "headline": "Before you build, get the questions ",
+    "headlineAccent": "right.",
+    "subline": "Where AI creates real value, whether your data can carry it, and what to build first."
+  },
   "gap": {
     "question": "Where are you on your AI Transformation Journey?",
     "labels": [

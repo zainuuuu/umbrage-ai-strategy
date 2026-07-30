@@ -62,6 +62,10 @@
   --fs-gap-label: clamp(0.875rem, 1.09375vw, 1.3125rem); /* -> 21px at 1920 */
   --fs-gap-question: clamp(2rem, 3.33333vw, 4rem); /* -> 64px at 1920 */
 
+  /* SectionGap2 (section three): same proportional-to-1920 model. */
+  --fs-gap2-headline: clamp(1.375rem, 2.29167vw, 2.75rem); /* -> 44px at 1920 */
+  --fs-gap2-subline: clamp(1rem, 1.25vw, 1.5rem); /* -> 24px at 1920 */
+
   /* --- Weights --- */
   --fw-light: 300;
   --fw-regular: 400;
@@ -73,6 +77,8 @@
   --tracking-headline: -3.52px;
   --tracking-subhead: -0.64px;
   --tracking-eyebrow: 1.6px;
+  --tracking-gap2-headline: -1.76px;
+  --tracking-gap2-subline: -0.48px;
 
   /* --- Radius --- */
   --radius-pill: 999px;
