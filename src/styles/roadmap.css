@@ -303,16 +303,20 @@ html, body {
 }
 
 /* ============================================================================
-   TransitionWall — Move 2, the hero -> section-gap seam. 7 full-bleed columns
+   TransitionWall — the hero -> section-gap seam. 7 full-bleed columns
    anchored to hero's own bottom edge (position:absolute within .hero, which
    is position:relative via .section-shell) — NOT extra document flow height,
    so it never pushes section-gap down; it overlays the bottom of hero,
    rising up into the dark as the user scrolls that boundary into view.
    z-index 1: above hero__bg (0), below hero__inner (2) and navbar (3) — see
-   TransitionWall.jsx for the rise choreography. Each column's own CSS height
-   is its ∧ peak target; `scale` collapses it to 1 0 (invisible) by default —
-   the reduced-motion/no-JS static state — and the motion pass only ever
-   scales that fixed box up from a bottom origin.
+   TransitionWall.jsx for the rise choreography.
+
+   ONE clean, solid scaling box per column (.transition-wall__fill) — no
+   internal seams/cells, no settle. It rises once (see TransitionWall.jsx)
+   and holds; its only "disappearance" is scrolling out of view with the
+   rest of hero, since this whole overlay is bottom-anchored to hero's own
+   bottom edge and unpinned. `scale` collapses the fill to 1 0 (invisible)
+   by default — the reduced-motion/no-JS static state.
    ============================================================================ */
 .ai-strategy .transition-wall {
   position: absolute;
@@ -325,6 +329,12 @@ html, body {
 }
 .ai-strategy .transition-wall__col {
   position: absolute;
+  bottom: 0;
+}
+.ai-strategy .transition-wall__fill {
+  position: absolute;
+  left: 0;
+  right: 0;
   bottom: 0;
   background: var(--onyx-1);
   transform-origin: bottom;
