@@ -7,11 +7,24 @@
    automatically on Windows/M365 machines where it's already installed.
 
    TO SHIP THE REAL FACES — this is the only place you touch:
-     1. Drop the woff2 files into src/assets/fonts/
-     2. Uncomment the @font-face blocks below.
+     1. Drop the font files into src/assets/fonts/
+     2. Uncomment/activate the matching @font-face block below.
    Family names already match the tokens in tokens.css, so nothing else
    changes anywhere in the app.
+
+   CURRENT STATUS (only what's actually in src/assets/fonts/ is active):
+     - Aptos Serif Italic (.ttf) — ACTIVE below.
+     - Aptos Regular/SemiBold/Black/Light, Aptos Serif Regular, Aptos Mono
+       Bold — files not yet present; blocks stay commented until dropped in.
    ============================================================================ */
+
+@font-face {
+  font-family: 'Aptos Serif';
+  src: url('../assets/fonts/Aptos-Serif-Italic.ttf') format('truetype');
+  font-weight: 400; /* the file's own subfamily is "Regular Weight Width" — a single regular-weight italic, not bold/semibold */
+  font-style: italic;
+  font-display: swap;
+}
 
 /*
 @font-face { font-family: 'Aptos'; src: url('../assets/fonts/Aptos-Light.woff2')    format('woff2'); font-weight: 300; font-style: normal; font-display: swap; }

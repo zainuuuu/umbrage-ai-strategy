@@ -3,7 +3,7 @@ import prequelGlyph from '../assets/prequel-glyph.svg'
 // Section three — section-gap-2 (Figma node 5213:3383). "State 1" only: the
 // light intro before an upcoming pixel-wipe transition (built later). A
 // continuation of section-gap's Onyx-1 ground: three grid rules, a faint
-// background glyph, two soft blur halos, and a centered headline + sub-line.
+// background glyph, a top-edge blur band, and a centered headline + sub-line.
 // Static — no motion here.
 //
 // Positions/sizes are Figma px on a 1920x1080 reference frame, converted to
@@ -36,7 +36,11 @@ export default function SectionGap2({ gapTwo }) {
       {/* Prequel four-point mark (node 5213:3858) — the export's own path
           already carries its intended faintness (opacity 0.02 baked in), so
           this renders at full container opacity rather than stacking another
-          fade on top of it. */}
+          fade on top of it. top uses the headline's own anchor point (513,
+          itself a center reference via .headline's translate:-50%-50%) so
+          the glyph's vertical center lands exactly on the headline's —
+          .section-gap-2__glyph's translate:0,-50% does the centering; left
+          stays a literal left edge (628, unchanged, per Figma). */}
       <img
         className="section-gap-2__glyph"
         aria-hidden="true"
@@ -44,14 +48,16 @@ export default function SectionGap2({ gapTwo }) {
         alt=""
         style={{
           left: pct(628, FRAME_W),
-          top: pct(208, FRAME_H),
+          top: pct(513, FRAME_H),
           width: pct(664, FRAME_W),
           height: pct(664, FRAME_H),
         }}
       />
 
-      {/* Two soft blur halos, exact Figma rects — horizontally centered,
-          top-edge positioned (halo 1 bleeds off the section's top). */}
+      {/* Top-edge atmospheric band ONLY — softens the section's top seam for
+          the incoming transition, bleeding off the top edge. NOT a text
+          backdrop: it sits well above the headline/subline, which stay on
+          clean Onyx-1 ground (no haze). */}
       <div
         className="section-gap-2__halo"
         aria-hidden="true"
@@ -61,17 +67,6 @@ export default function SectionGap2({ gapTwo }) {
           width: pct(2008, FRAME_W),
           height: pct(252, FRAME_H),
           filter: 'blur(75px)',
-        }}
-      />
-      <div
-        className="section-gap-2__halo"
-        aria-hidden="true"
-        style={{
-          left: pct(960, FRAME_W),
-          top: pct(370, FRAME_H),
-          width: pct(1453, FRAME_W),
-          height: pct(406, FRAME_H),
-          filter: 'blur(50px)',
         }}
       />
 
