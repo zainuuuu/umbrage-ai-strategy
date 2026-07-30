@@ -165,19 +165,24 @@ html, body {
 }
 
 /* ============================================================================
-   PRIMITIVE — MosaicField (hero sticky backdrop, Figma node 3422:1386)
+   PRIMITIVE — MosaicField (hero parallax backdrop, Figma node 3422:1386)
    Onyx ground fills the whole hero; the glow asset (native 1920x1202) is
    object-fit:cover / object-position:left top — it covers the full hero
    width AND height (so the mosaic + blue field run all the way down the left
    side to the bottom, no flat-Onyx cutoff) while staying anchored to its
    upper-left corner (so the bloom/mosaic squares stay pinned behind the
    nav/eyebrow, not drifting toward center as a plain "cover" would).
-   position:sticky pins the whole layer while content scrolls over it. Onyx
-   on the container is the fallback for any edge case the image doesn't
-   reach, clipped by overflow:hidden.
+   position:absolute, top:0 — the hero content column is also absolutely
+   positioned from the same top:0 origin (see .hero__inner below), so at
+   scroll 0 this renders identically to the old position:sticky layer (sticky
+   hasn't engaged yet at rest either way). MosaicField.jsx applies a
+   scroll-scrubbed translateY as the page scrolls, making this layer lag
+   behind the 1x-scrolling content (parallax) — see that file for the
+   gsap.matchMedia gating. Onyx on the container is the fallback for any edge
+   case the image doesn't reach, clipped by overflow:hidden.
    ============================================================================ */
 .ai-strategy .hero__bg {
-  position: sticky;
+  position: absolute;
   top: 0;
   height: 100vh;
   width: 100%;
@@ -185,6 +190,7 @@ html, body {
   z-index: 0;
   pointer-events: none;
   background: var(--onyx);
+  will-change: transform;
 }
 .ai-strategy .hero__bg-glow {
   position: absolute;
@@ -294,6 +300,36 @@ html, body {
   font-size: var(--fs-subhead);
   letter-spacing: var(--tracking-subhead);
   color: var(--onyx-2);
+}
+
+/* ============================================================================
+   TransitionWall — Move 2, the hero -> section-gap seam. 7 full-bleed columns
+   anchored to hero's own bottom edge (position:absolute within .hero, which
+   is position:relative via .section-shell) — NOT extra document flow height,
+   so it never pushes section-gap down; it overlays the bottom of hero,
+   rising up into the dark as the user scrolls that boundary into view.
+   z-index 1: above hero__bg (0), below hero__inner (2) and navbar (3) — see
+   TransitionWall.jsx for the rise choreography. Each column's own CSS height
+   is its ∧ peak target; `scale` collapses it to 1 0 (invisible) by default —
+   the reduced-motion/no-JS static state — and the motion pass only ever
+   scales that fixed box up from a bottom origin.
+   ============================================================================ */
+.ai-strategy .transition-wall {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+.ai-strategy .transition-wall__col {
+  position: absolute;
+  bottom: 0;
+  background: var(--onyx-1);
+  transform-origin: bottom;
+  scale: 1 0;
+  will-change: scale;
 }
 
 /* ============================================================================
