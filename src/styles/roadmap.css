@@ -399,6 +399,76 @@ html, body {
 }
 
 /* ============================================================================
+   SectionGap2 — section three (Figma node 5213:3383). "State 1" only: the
+   light intro before an upcoming pixel-wipe transition (not built here).
+   Continues the Onyx-1 break from section-gap. Centered headline + sub-line,
+   a faint background glyph, and two soft blur halos for depth — all static,
+   no motion. z-order: ground < glyph < blur halos < text.
+
+   NOTE (per the build brief): the Figma export wraps nodes in
+   rotate(180)+scaleY(-100%) pairs that cancel out to normal orientation —
+   an export artifact, ignored here; everything below renders upright.
+   ============================================================================ */
+.ai-strategy .section-gap-2 {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background: var(--onyx-1);
+}
+.ai-strategy .section-gap-2__rule {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--onyx-2);
+}
+.ai-strategy .section-gap-2__glyph {
+  position: absolute;
+  z-index: 1;
+  display: block;
+  pointer-events: none;
+}
+.ai-strategy .section-gap-2__halo {
+  position: absolute;
+  z-index: 2;
+  translate: -50% 0; /* horizontal centering only — top is the rect's own top edge, not a center point */
+  background: var(--onyx-1);
+  pointer-events: none;
+}
+.ai-strategy .section-gap-2__headline {
+  position: absolute;
+  z-index: 3;
+  margin: 0;
+  translate: -50% -50%;
+  font-family: var(--font-display);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-gap2-headline); /* 44px at 1920 */
+  letter-spacing: var(--tracking-gap2-headline);
+  color: var(--onyx);
+  text-align: center;
+  white-space: nowrap;
+}
+.ai-strategy .section-gap-2__headline-accent {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-weight: var(--fw-semibold);
+}
+.ai-strategy .section-gap-2__subline {
+  position: absolute;
+  z-index: 3;
+  margin: 0;
+  translate: -50% -50%;
+  font-family: var(--font-display);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-gap2-subline); /* 24px at 1920 */
+  letter-spacing: var(--tracking-gap2-subline);
+  color: var(--onyx);
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* ============================================================================
    RESPONSIVE
    ============================================================================ */
 @media (max-width: 900px) {
