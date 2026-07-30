@@ -295,6 +295,61 @@ html, body {
   letter-spacing: var(--tracking-subhead);
   color: var(--onyx-2);
 }
+
+/* ============================================================================
+   SectionGap — section two (Figma node 3422:2351). Light tonal break (Onyx-1)
+   after the dark hero. Static final state: scattered low-opacity labels
+   (bottom layer) < heavily-blurred Onyx-1 rectangle (clears the center) <
+   the question (top layer, fully visible). left/top/width/height on the
+   labels/blur/question come from inline styles (per-instance data from
+   roadmap-content.json's Figma px, converted to percentages of the 1920x1080
+   reference frame) — the CSS here only owns the shared type/color treatment.
+   ============================================================================ */
+.ai-strategy .section-gap {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background: var(--onyx-1);
+}
+.ai-strategy .section-gap__labels {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+.ai-strategy .section-gap__label {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-gap-label); /* 21px at 1920 */
+  letter-spacing: -0.42px;
+  color: var(--onyx);
+  opacity: 0.4;
+  white-space: nowrap;
+}
+.ai-strategy .section-gap__blur {
+  position: absolute;
+  z-index: 2;
+  background: var(--onyx-1);
+  filter: blur(125px);
+  pointer-events: none;
+}
+.ai-strategy .section-gap__question {
+  position: absolute;
+  z-index: 3;
+  margin: 0;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-gap-question); /* 64px at 1920 */
+  letter-spacing: -2.56px;
+  color: var(--onyx);
+  text-align: center;
+  white-space: nowrap;
+}
+
 /* ============================================================================
    RESPONSIVE
    ============================================================================ */
