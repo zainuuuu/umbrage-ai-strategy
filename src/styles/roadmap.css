@@ -402,8 +402,10 @@ html, body {
    SectionGap2 — section three (Figma node 5213:3383). "State 1" only: the
    light intro before an upcoming pixel-wipe transition (not built here).
    Continues the Onyx-1 break from section-gap. Centered headline + sub-line,
-   a faint background glyph, and two soft blur halos for depth — all static,
-   no motion. z-order: ground < glyph < blur halos < text.
+   a faint background glyph, and a top-edge blur band that softens the
+   section's top seam (NOT a text backdrop — the ground behind the headline/
+   sub-line stays clean Onyx-1) — all static, no motion.
+   z-order: ground < glyph < blur band < text.
 
    NOTE (per the build brief): the Figma export wraps nodes in
    rotate(180)+scaleY(-100%) pairs that cancel out to normal orientation —
@@ -426,6 +428,7 @@ html, body {
 .ai-strategy .section-gap-2__glyph {
   position: absolute;
   z-index: 1;
+  translate: 0 -50%; /* left is a literal left-edge (unchanged, per Figma) — only the vertical axis centers, on the headline's own anchor point */
   display: block;
   pointer-events: none;
 }
@@ -452,7 +455,11 @@ html, body {
 .ai-strategy .section-gap-2__headline-accent {
   font-family: var(--font-editorial);
   font-style: italic;
-  font-weight: var(--fw-semibold);
+  /* Overrides the SemiBold inherited from .headline: the real Aptos Serif
+     Italic file is a single regular-weight face (see fonts.css) — forcing
+     600 here would make the browser fake-bold a face that has no bold
+     variant registered, instead of rendering its own real (thinner) weight. */
+  font-weight: var(--fw-regular);
 }
 .ai-strategy .section-gap-2__subline {
   position: absolute;
