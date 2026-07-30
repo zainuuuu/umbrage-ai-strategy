@@ -1,6 +1,7 @@
 import MosaicField from './MosaicField.jsx'
 import NavBar from './NavBar.jsx'
 import Eyebrow from './Eyebrow.jsx'
+import TransitionWall from './TransitionWall.jsx'
 
 // Act 1 — hero. Static (motion arrives per-section later). Unlike a plain
 // SectionShell section, the hero needs full-bleed layers (mosaic backdrop, nav)
@@ -8,8 +9,9 @@ import Eyebrow from './Eyebrow.jsx'
 // section-shell classes directly rather than nesting the generic SectionShell
 // component. NavBar sits at the top; the centered content block (eyebrow ->
 // headline -> subhead) sits at the Figma frame's ~439/1202 vertical ratio.
-// No TransitionPanel here — that's the hero -> section-two seam, rendered
-// once section two exists (TransitionPanel component is kept for reuse then).
+// TransitionWall (the hero -> section-gap seam, Move 2) sits at hero's own
+// bottom edge — see that file. TransitionPanel (a different, static seam
+// primitive) is kept for reuse at later section boundaries.
 export default function Hero({ nav, hero }) {
   return (
     <header id="hero" aria-label="Introduction" className="section-shell hero">
@@ -29,6 +31,8 @@ export default function Hero({ nav, hero }) {
           </div>
         </div>
       </div>
+
+      <TransitionWall />
     </header>
   )
 }
