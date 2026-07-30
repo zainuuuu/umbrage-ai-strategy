@@ -1,4 +1,4 @@
-// Button — pill, 24px/16px padding, Aptos SemiBold 18px, Onyx-1 text.
+// Button — pill, 24px/16px padding, Aptos SemiBold 16px, Onyx-1 text, leading-none.
 //   type="secondary": 1px Savoy-base border, fills solid on hover.
 //   type="primary" (default): no fill, no border — plain text-weight button.
 // Rendered as a real <button> for now (no confirmed destinations yet); pass

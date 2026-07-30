@@ -9,13 +9,15 @@
     "hero": {
       "eyebrow": "AI DELIVERY SYSTEM",
       "headline": "Enterprise AI, delivered end-to-end.",
-      "subhead": "Strategy to production, data to shipped product, one team that takes you the whole way. Wherever you're starting, this is how it gets built."
+      "subhead": [
+        "Strategy to production, data to shipped product, one team that takes you the whole way.",
+        "Wherever you're starting, this is how it gets built."
+      ]
     },
     "nav": {
       "items": ["Solutions", "AI Delivery System", "The Studio", "Careers", "Contact"],
       "utility": [
-        { "label": "Get AI Ready", "type": "secondary" },
-        { "label": "EN", "type": "primary" }
+        { "label": "Get AI Ready", "type": "secondary" }
       ]
     },
     "sectionOrder": ["hero", "gap-where-are-you", "prequel-intro", "ai-delivery", "challenge-matrix", "footer"],
