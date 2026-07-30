@@ -141,6 +141,31 @@
     },
     "_serviceContentNote": "Per-service sectionSubtitle/valueHeader/body/capabilities/proof sourced from the six detail slides. Proof cards default to ANONYMIZED (clientCleared:false) — do not render client names or logos until each is cleared. Delivery System proof art is WIP."
   },
+  "gap": {
+    "question": "Where are you on your AI Transformation Journey?",
+    "labels": [
+      { "text": "Cost unpredictability", "x": 732.5, "y": 82 },
+      { "text": "Security & compliance", "x": 1184, "y": 96 },
+      { "text": "Documentation deficits", "x": 1603, "y": 189 },
+      { "text": "Shadow AI usage", "x": 262, "y": 196 },
+      { "text": "Executive turnover", "x": 620, "y": 263 },
+      { "text": "Third-party risk", "x": 1083, "y": 322 },
+      { "text": "AI literacy", "x": 1710, "y": 322 },
+      { "text": "Legacy systems", "x": 179, "y": 336 },
+      { "text": "Siloed data", "x": 682.5, "y": 476 },
+      { "text": "Leadership alignment", "x": 205, "y": 520 },
+      { "text": "Change resistance", "x": 1774.5, "y": 550 },
+      { "text": "Unclear ownership", "x": 1099.5, "y": 705 },
+      { "text": "Data privacy exposure", "x": 220.5, "y": 760 },
+      { "text": "IP & copyright risk", "x": 674.5, "y": 811 },
+      { "text": "Technical debt", "x": 1733.5, "y": 825 },
+      { "text": "Competitive pressure", "x": 1263.5, "y": 866 },
+      { "text": "Vendor lock-in risk", "x": 137, "y": 948 },
+      { "text": "Talent gaps", "x": 936.5, "y": 955 },
+      { "text": "AI governance framework", "x": 1562, "y": 958 },
+      { "text": "Customer trust", "x": 454, "y": 1003 }
+    ]
+  },
   "challengeCloud": {
     "eyebrow": "Your AI Transformation Journey",
     "headline": "Your journey will touch a lot: strategy, data, architecture, delivery, adoption, governance, and more.",

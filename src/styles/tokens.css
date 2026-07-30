@@ -55,6 +55,13 @@
   --fs-headline: clamp(2.625rem, 2.30857vw + 2.0623rem, 4.14rem); /* 42px@390 -> 66.24px@1440 (ceiling) */
   --fs-subhead: clamp(1.1875rem, 0.5219vw + 1.06029rem, 1.53rem); /* 19px@390 -> 24.48px@1440 (ceiling) */
 
+  /* SectionGap (section two): same proportional-to-1920 model as fs-display/
+     fs-section/fs-heading above (coefficient = px / 19.2, capped at the design
+     px value once viewport reaches 1920 — confirmed as the intended model for
+     the whole page, not just the hero). */
+  --fs-gap-label: clamp(0.875rem, 1.09375vw, 1.3125rem); /* -> 21px at 1920 */
+  --fs-gap-question: clamp(2rem, 3.33333vw, 4rem); /* -> 64px at 1920 */
+
   /* --- Weights --- */
   --fw-light: 300;
   --fw-regular: 400;
