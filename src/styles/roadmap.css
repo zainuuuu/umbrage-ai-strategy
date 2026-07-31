@@ -303,20 +303,27 @@ html, body {
 }
 
 /* ============================================================================
-   TransitionWall — the hero -> section-gap seam. 7 full-bleed columns
-   anchored to hero's own bottom edge (position:absolute within .hero, which
-   is position:relative via .section-shell) — NOT extra document flow height,
-   so it never pushes section-gap down; it overlays the bottom of hero,
-   rising up into the dark as the user scrolls that boundary into view.
-   z-index 1: above hero__bg (0), below hero__inner (2) and navbar (3) — see
-   TransitionWall.jsx for the rise choreography.
+   TransitionWall — reusable rising-∧-wall seam. Used at the hero ->
+   section-gap boundary (bottom-anchored within .hero, which is
+   position:relative via .section-shell — see Hero.jsx) AND at the
+   section-gap-2 -> section-ai-delivery boundary (top-anchored within
+   .section-ai-delivery, Onyx-5, externally driven — see
+   SectionAiDelivery.jsx / SectionGap2.jsx). 7 full-bleed columns; NOT extra
+   document flow height (height:0), so it never pushes anything down — it
+   overlays its anchor edge, rising into whatever's on the other side of the
+   boundary as the user scrolls it into view.
+   z-index 1 in both contexts: above the ground/dark-bg layer beneath it,
+   below the foreground content above it — see TransitionWall.jsx for the
+   rise choreography.
 
    ONE clean, solid scaling box per column (.transition-wall__fill) — no
    internal seams/cells, no settle. It rises once (see TransitionWall.jsx)
-   and holds; its only "disappearance" is scrolling out of view with the
-   rest of hero, since this whole overlay is bottom-anchored to hero's own
-   bottom edge and unpinned. `scale` collapses the fill to 1 0 (invisible)
-   by default — the reduced-motion/no-JS static state.
+   and holds; its only "disappearance" is scrolling out of view with its
+   parent, since this whole overlay is unpinned. `scale` collapses the fill
+   to 1 0 (invisible) by default — the reduced-motion/no-JS static state.
+   Fill color comes from an inline style (the `color` prop) — CSS has no
+   default background here on purpose, so the prop is the only source of
+   truth for both instances.
    ============================================================================ */
 .ai-strategy .transition-wall {
   position: absolute;
@@ -327,6 +334,10 @@ html, body {
   z-index: 1;
   pointer-events: none;
 }
+.ai-strategy .transition-wall--top {
+  top: 0;
+  bottom: auto;
+}
 .ai-strategy .transition-wall__col {
   position: absolute;
   bottom: 0;
@@ -336,7 +347,6 @@ html, body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--onyx-1);
   transform-origin: bottom;
   scale: 1 0;
   will-change: scale;
@@ -488,15 +498,14 @@ html, body {
 
 /* ============================================================================
    SectionAiDelivery — section four (meta.sectionOrder id "ai-delivery").
-   STEP A ONLY: the minimal dark shell used as the cover target for the
-   gap-2 -> ai-delivery pin/cover transition (see SectionGap2.jsx for the
-   pin). Just the top transition-panel seam + the shared 3-rule vertical
-   grid on a plain Onyx ground — cards/connectors/icons arrive in later
-   steps. Height is proportional to the 1920-wide reference frame's real
-   content height (4254px), same width-driven scaling model used for type
-   elsewhere on this page (coefficient = px / 19.2, expressed here directly
-   as vw so the whole frame's internal proportions hold as viewport width
-   changes).
+   Dark shell used as the cover target for the gap-2 -> ai-delivery
+   pin/cover transition (see SectionGap2.jsx for the pin), plus the AI
+   Prequel icon box / card (Steps B+C — connectors/other offering cards
+   arrive in later steps). Height is proportional to the 1920-wide
+   reference frame's real content height (4254px), same width-driven
+   scaling model used for type elsewhere on this page (coefficient =
+   px / 19.2, expressed here directly as vw so the whole frame's internal
+   proportions hold as viewport width changes).
    z-index 2: above .section-gap-2 (1) — see that file for why.
    ============================================================================ */
 .ai-strategy .section-ai-delivery {
@@ -513,6 +522,128 @@ html, body {
   bottom: 0;
   width: 1px;
   background: var(--hairline-on-dark);
+}
+
+/* ============================================================================
+   AI Prequel card (Figma node 5223:4589 — expanded state; collapsed icon
+   box per the Step B read, 10px radius vs. the expanded 16px). CSS owns
+   the EXPANDED, final look as the default — that's the reduced-motion/
+   no-JS static state. SectionGap2.jsx's pinned timeline is what
+   temporarily collapses this down to the 84px icon box for the
+   hold/cover/beat portion of the scroll, then grows it back to exactly
+   these resting values during the expansion phase — same "CSS = resting
+   state, JS visits an earlier one" pattern used everywhere else on this
+   page. width/height/padding/border-radius are plain layout properties
+   here (not transforms), so growth reflows real content instead of
+   visually stretching it; overflow:hidden clips content before the box is
+   tall enough to hold it (belt-and-braces — the JS fades content in only
+   once sized appropriately).
+
+   display:flex column with align-items:stretch is the CSS default —
+   stretch makes every child (header/tagline/capabilities) fill the full
+   card width, which is EXACTLY how plain block stacking behaved before
+   this flex refactor, so the EXPANDED/resting look (top-left Figma
+   layout, tagline wrapping at the card's width, the capabilities grid
+   spanning it) is pixel-identical to the pre-flex markup — flex-column +
+   stretch is not a visual change, only a hook for the collapsed state
+   below. SectionGap2.jsx's pinned timeline switches align-items/
+   justify-content to 'center' only while collapsed (a discrete .set(),
+   not tweened — those properties aren't numeric/interpolatable — applied
+   right when the box is still ~84px, so nothing visibly jumps), which is
+   what centers the icon on both axes in the collapsed box: the header's
+   own gap collapses to 0 and title collapses to max-width/max-height:0 at
+   the same moment (see their own rules below), so the header (an icon
+   only, effectively — the collapsed title contributes zero width AND
+   zero height, and the collapsed gap contributes no extra space) is the
+   ONLY content contributing size, and centering the flex column centers
+   that icon precisely.
+   ============================================================================ */
+.ai-strategy .ai-delivery-card {
+  position: absolute;
+  left: 50%;
+  translate: -50% 0; /* horizontal centering only — top is a literal top edge, anchored, per the "grows down from a fixed top" spec */
+  z-index: 2; /* above the seam wall (1) */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 37.8125vw; /* 726px at 1920 */
+  padding: 2.1875vw; /* 42px at 1920 */
+  background: var(--onyx);
+  border: 1px solid var(--onyx-4);
+  border-radius: var(--radius-card); /* 16px expanded default; 10px collapsed, set via JS */
+  overflow: hidden;
+  will-change: width, height, padding, border-radius;
+}
+.ai-strategy .ai-delivery-card__header {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column; /* icon ABOVE title (Figma 5223:4589), not side-by-side */
+  gap: 20px; /* collapsed to 0 while the box is the 84px icon-only state — see SectionGap2.jsx */
+  will-change: gap;
+}
+.ai-strategy .ai-delivery-card__icon {
+  flex: 0 0 auto;
+  width: 2.08333vw; /* 40px at 1920 */
+  height: 2.08333vw;
+  display: flex;
+  will-change: width, height;
+}
+.ai-strategy .ai-delivery-card__icon-mark {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.ai-strategy .ai-delivery-card__title {
+  flex: 0 0 auto;
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-card-title);
+  color: var(--onyx-1);
+  white-space: nowrap;
+  overflow: hidden; /* pairs with max-width/max-height:0 while collapsed */
+  will-change: opacity, max-width, max-height;
+}
+.ai-strategy .ai-delivery-card__tagline {
+  flex: 0 0 auto;
+  margin: 20px 0 0; /* title -> tagline spacing */
+  font-family: var(--font-display);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-card-tagline);
+  color: var(--onyx-1);
+  overflow: hidden; /* pairs with max-height:0 while collapsed */
+  will-change: opacity, max-height;
+}
+.ai-strategy .ai-delivery-card__capabilities {
+  flex: 0 0 auto;
+  margin-top: 20px; /* tagline -> items spacing */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(3, auto); /* paired with grid-auto-flow:column below, so 6 items fill column-major (col1 then col2), not row-major */
+  grid-auto-flow: column;
+  row-gap: 30px;
+  column-gap: 60px;
+  overflow: hidden; /* pairs with max-height:0 while collapsed */
+  will-change: opacity, max-height;
+}
+.ai-strategy .ai-delivery-card__capability {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.ai-strategy .ai-delivery-card__capability-bullet {
+  flex: 0 0 auto;
+  width: 12px;
+  height: 12px;
+  display: block;
+}
+.ai-strategy .ai-delivery-card__capability-label {
+  font-family: var(--font-display);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-card-capability);
+  color: var(--white);
 }
 
 /* ============================================================================
