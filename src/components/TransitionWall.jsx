@@ -47,23 +47,34 @@ const RISE_EASES = ['power3.out', 'power2.out', 'sine.out']
 // Tunable.
 const GROWTH_EASE = 'sine.inOut'
 
-// TransitionWall — the hero -> section-gap seam. A wall of Onyx-1 columns
-// rises from the hero/section-gap boundary (this component's bottom:0
-// anchor, via .hero's own position:relative from .section-shell) up into
-// the dark hero, peaked in the center (∧, reading as the light section
-// climbing over the dark one) — then keeps gradually climbing, taller
-// still, all the way until it scrolls out with the rest of hero. No pin:
-// it's a plain absolutely-positioned overlay at the bottom of hero,
-// scrolling normally with the page — only each column's own scaleY is
-// scrubbed to scroll, never frozen at any point along the way.
+// TransitionWall — a reusable rising-∧-wall seam, used at TWO section
+// boundaries on this page:
+//   - hero -> section-gap (self-driving: default props, unpositioned
+//     `id`/`externallyDriven`, anchored at the BOTTOM of its parent — see
+//     Hero.jsx)
+//   - section-gap-2 -> section-ai-delivery (externally driven, Onyx-5,
+//     anchored at the TOP of its parent — see SectionAiDelivery.jsx /
+//     SectionGap2.jsx)
+// Parameterized (color/edge/driving mode), not forked, so both stay one
+// component/one set of bug fixes.
 //
-// Each column is ONE clean, solid Onyx-1 fill (.transition-wall__fill) —
-// no internal seams/cells, no settle tween.
+// A wall of solid columns rises from its anchor edge, peaked in the center
+// (∧) — then keeps gradually climbing, taller still, all the way to
+// progress 1. No pin: it's a plain absolutely-positioned overlay, height:0
+// itself (adds no layout space) — only each column's own scaleY is
+// scrubbed, never frozen at any point along the way.
 //
-// Collapsed (scale 1 0) is the CSS-authored default, so reduced-motion
-// (where the animation below never runs) always renders static-collapsed —
-// invisible, never blocking content.
-export default function TransitionWall() {
+// Each column is ONE clean, solid fill (.transition-wall__fill) — no
+// internal seams/cells, no settle tween. Collapsed (scale 1 0) is the
+// CSS-authored default, so reduced-motion (where the animation below never
+// runs) always renders static-collapsed — invisible, never blocking
+// content.
+export default function TransitionWall({
+  id,
+  color = 'var(--onyx-1)',
+  edge = 'bottom',
+  externallyDriven = false,
+}) {
   const wallRef = useRef(null)
   const fillRefs = useRef([])
 
@@ -110,29 +121,42 @@ export default function TransitionWall() {
           )
         }
 
-        // Spans the WHOLE hero-exit scroll (hero's own top-to-bottom, in
-        // document coords 0 -> hero's height) — hero's bottom coincides
-        // exactly with section-gap's top (adjacent sections, no gap).
-        // progress 0 = hero at rest (wall down); Phase 1 completes the
-        // 12vh ∧ by RISE_END (0.55), and Phase 2 keeps it growing smoothly
-        // the rest of the way, reaching GROWTH_PEAK_VH exactly at progress
-        // 1 — every active column's own tweens now span all the way to
-        // time 1, so the timeline's auto-computed duration is naturally 1
-        // and self.progress maps to it 1:1 (no duration-anchor workaround
-        // needed, unlike the hold-then-freeze version this replaces).
-        //
-        // .closest('#hero'), not a '#hero' selector string: useGSAP's `scope`
-        // below restricts GSAP's own selector-text resolution to this
-        // component's subtree, and '#hero' is an ancestor, not a descendant —
-        // the scoped lookup would silently fail (see the identical bug + fix
-        // in MosaicField.jsx's parallax trigger).
-        ScrollTrigger.create({
-          trigger: wallRef.current.closest('#hero'),
-          start: 'top top',
-          end: 'bottom top',
-          scrub: true,
-          onUpdate: (self) => tl.progress(self.progress),
-        })
+        if (externallyDriven) {
+          // Driven by a parent's own scroll-linked progress (e.g. the
+          // gap-2 -> ai-delivery cover in SectionGap2.jsx), not a
+          // ScrollTrigger owned by this component. Expose the built
+          // timeline on the wall's own DOM node so the parent can drive it
+          // via a plain DOM query — the same "document.getElementById +
+          // direct GSAP control" pattern already used for every other
+          // cross-component motion link on this page (ai-delivery's cover
+          // transform, the Prequel card), rather than introducing a new
+          // ref/imperative-handle pattern.
+          wallRef.current.__transitionWallTimeline = tl
+        } else {
+          // Spans the WHOLE hero-exit scroll (hero's own top-to-bottom, in
+          // document coords 0 -> hero's height) — hero's bottom coincides
+          // exactly with section-gap's top (adjacent sections, no gap).
+          // progress 0 = hero at rest (wall down); Phase 1 completes the
+          // 12vh ∧ by RISE_END (0.55), and Phase 2 keeps it growing
+          // smoothly the rest of the way, reaching GROWTH_PEAK_VH exactly
+          // at progress 1 — every active column's own tweens now span all
+          // the way to time 1, so the timeline's auto-computed duration is
+          // naturally 1 and self.progress maps to it 1:1 (no
+          // duration-anchor workaround needed).
+          //
+          // .closest('#hero'), not a '#hero' selector string: useGSAP's
+          // `scope` below restricts GSAP's own selector-text resolution to
+          // this component's subtree, and '#hero' is an ancestor, not a
+          // descendant — the scoped lookup would silently fail (see the
+          // identical bug + fix in MosaicField.jsx's parallax trigger).
+          ScrollTrigger.create({
+            trigger: wallRef.current.closest('#hero'),
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true,
+            onUpdate: (self) => tl.progress(self.progress),
+          })
+        }
       })
 
       return () => mm.revert()
@@ -141,7 +165,12 @@ export default function TransitionWall() {
   )
 
   return (
-    <div className="transition-wall" aria-hidden="true" ref={wallRef}>
+    <div
+      id={id}
+      className={edge === 'top' ? 'transition-wall transition-wall--top' : 'transition-wall'}
+      aria-hidden="true"
+      ref={wallRef}
+    >
       {Array.from({ length: COLS }, (_, col) => (
         <div
           key={col}
@@ -151,7 +180,7 @@ export default function TransitionWall() {
           <div
             ref={(el) => (fillRefs.current[col] = el)}
             className="transition-wall__fill"
-            style={{ height: `${COLUMN_HEIGHT_RATIOS[col] * PEAK_VH}vh` }}
+            style={{ height: `${COLUMN_HEIGHT_RATIOS[col] * PEAK_VH}vh`, background: color }}
           />
         </div>
       ))}
